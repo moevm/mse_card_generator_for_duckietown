@@ -1,0 +1,1130 @@
+objects:
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.0222729918155746
+  - 2.9184414574250495
+  rotate: 9.790140133968919
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.7227553498240564
+  - 0.06592816465867701
+  rotate: 301.0996839842037
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.042458616020885
+  - 1.1047995101013266
+  rotate: 330.86440356686967
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.1644223832966394
+  - 0.16407211124399568
+  rotate: 310.23085956035567
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.5362739332017705
+  - 0.7889835982673497
+  rotate: 320.0959374054422
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.7348132587823715
+  - 0.23358938389879247
+  rotate: 304.3429361757617
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.775677046330487
+  - 2.3636618592862364
+  rotate: 6.604921043934496
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.1210941010763733
+  - 0.3575677324666823
+  rotate: 314.3480834309846
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.9409730333953539
+  - 0.11035078532418152
+  rotate: 298.2875694319268
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.019910062769131
+  - 1.149752795849741
+  rotate: 331.9616423268433
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.2461716346604366
+  - 2.913285466154882
+  rotate: 12.090176932620807
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.0402713543633317
+  - 0.3639095329960128
+  rotate: 315.20890205112715
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.026318701248402
+  - 1.034340406667177
+  rotate: 329.33908203240014
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.6837536572374208
+  - 2.965085771389406
+  rotate: 18.89158688495945
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.9774718022807685
+  - 0.385299695932505
+  rotate: 303.7907352760677
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.9035370781748167
+  - 1.4429003081327523
+  rotate: 337.95161081044273
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.5466380129547672
+  - 0.38331095381336244
+  rotate: 310.2444576416452
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.8275876491409915
+  - 2.6607930166784506
+  rotate: 14.76385834756448
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.951945383351236
+  - 2.9030296364324046
+  rotate: 22.186579856437987
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.7034203904825995
+  - 0.010394992204858955
+  rotate: 300.3367226769169
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.3946975263073735
+  - 2.254289359311233
+  rotate: -0.288375257989685
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.2474881991393851
+  - 0.08150865718416322
+  rotate: 307.79983684212345
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.7947075753390118
+  - 1.4889094782584436
+  rotate: 339.6273770290501
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.3025600929156345
+  - 2.2054355556226906
+  rotate: -2.2020142647948546
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.0825495172625497
+  - 1.8581912081576317
+  rotate: -11.571862205450657
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.5786257139056703
+  - 1.604139738065243
+  rotate: -16.89756706311607
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.5186851158628856
+  - 2.5432445595175777
+  rotate: 7.768667753917526
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.63726679870692
+  - 0.3887371192818774
+  rotate: 309.1806902033194
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.684788680458916
+  - 0.3817735364358549
+  rotate: 308.36564268870063
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.2558570660080077
+  - 1.3489914524385744
+  rotate: 336.15036599130883
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.6712877163359154
+  - 1.9223014351516483
+  rotate: -6.996729849425122
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.7266261010886286
+  - 0.07665183352911342
+  rotate: 301.24871998454984
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.9306131685243284
+  - 0.10661541639468475
+  rotate: 298.399637562312
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.137139492323883
+  - 0.7682080103618272
+  rotate: 322.7919350920495
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.7601043886418664
+  - 1.895920262759864
+  rotate: -7.180408886877814
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.84935016920684
+  - 1.3157472659617926
+  rotate: 333.6307614135649
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.0907870466623533
+  - 0.5926077274250685
+  rotate: 319.36190410288344
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.8644002242079218
+  - 2.888125924052242
+  rotate: 20.32111185047674
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.7867863002045812
+  - 2.524448052789572
+  rotate: 10.878099831240604
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.4760162636210588
+  - 2.6674628286919857
+  rotate: 9.976964489674003
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.6069419946462906
+  - 1.335171055815723
+  rotate: 335.0237947793619
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.0083516170069775
+  - 0.7163453213277624
+  rotate: 322.5409841357167
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.7694103740672553
+  - 0.7361032021763869
+  rotate: 316.182933905194
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.9555320941116066
+  - 0.08455322979180335
+  rotate: 297.49591314077986
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.4228752823230133
+  - 2.7048027160029435
+  rotate: 10.115185814155382
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.868868076266101
+  - 2.7748754301252685
+  rotate: 18.010806380857133
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.244154932476732
+  - 2.239377204721389
+  rotate: -1.852893023696197
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.734644003326805
+  - 2.9122310391169353
+  rotate: 18.65874436138307
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.0126687361924886
+  - 0.5103610446592999
+  rotate: 318.30378582685387
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.672193403362174
+  - 0.33777559024309567
+  rotate: 307.54945599729973
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.9911454487387519
+  - 0.4575768409020585
+  rotate: 305.3605476095505
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.9375636657745896
+  - 1.3551755166846515
+  rotate: 334.7043031007239
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.9378891144604697
+  - 1.3589607214120647
+  rotate: 334.8408886951383
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.2351948367287382
+  - 2.608542428755186
+  rotate: 6.080121635428014
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.5497349743879387
+  - 2.339591568199856
+  rotate: 3.291939231968371
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.4742151481751389
+  - 0.08388609534010161
+  rotate: 305.0447358875727
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.4043578332069337
+  - 0.46459076867551463
+  rotate: 313.7070678533664
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.3169893163681383
+  - 1.2325488126412076
+  rotate: 333.0152252891936
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.151818920504963
+  - 2.153296196983451
+  rotate: -4.452703109470804
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.9346628243991701
+  - 1.439372853618453
+  rotate: 337.78198315429574
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.0106050859392937
+  - 2.54467562130866
+  rotate: 2.7653775458724397
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.419082745622506
+  - 0.8174260928067558
+  rotate: 321.8396879887001
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.7196889917983946
+  - 0.17959175151023699
+  rotate: 303.43667746152164
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.6994619505456687
+  - 0.792106539720289
+  rotate: 318.53740038737783
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.0198205325239513
+  - 1.8201369626926822
+  rotate: -12.645034634585244
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.3421531912477405
+  - 1.2820901222553127
+  rotate: 334.2335421803671
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.0168208681263868
+  - 1.085113681338845
+  rotate: 330.5147101110888
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.1754425542720055
+  - 2.7591728146060763
+  rotate: 8.44364384754914
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.3860915951060322
+  - 0.9238424156548899
+  rotate: 324.7540365861706
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.6832189129535635
+  - 2.9312566604004426
+  rotate: 18.23097209479974
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.2180361540078126
+  - 2.124855426103239
+  rotate: -4.68643440315833
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.9821601961806574
+  - 1.4644766152300273
+  rotate: 338.6592995361498
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.8395184273777576
+  - 2.492214288911485
+  rotate: 10.860263664284076
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.6472520759229905
+  - 0.6506213611113477
+  rotate: 315.3712601214782
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.4627597389981708
+  - 0.039525951839414764
+  rotate: 304.36369761716713
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.3559890682981863
+  - 0.272507209802914
+  rotate: 310.2079261687333
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.0855104900856816
+  - 2.1898918402982113
+  rotate: -4.053777119156422
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.2159837060121157
+  - 1.0623764893745185
+  rotate: 329.15343487493965
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.8350709549325968
+  - 0.022927147027932415
+  rotate: 298.421566734433
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.201100528339712
+  - 1.5573235984352705
+  rotate: -18.571612268500587
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.8975571981220811
+  - 2.6793741699254374
+  rotate: 16.35251788566839
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.324570704816809
+  - 2.1540932244790345
+  rotate: -3.265377135004769
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.595750898139064
+  - 2.0789871419118158
+  rotate: -3.088100214795247
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.4941514867494017
+  - 0.8546669639201487
+  rotate: 322.1656818897703
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.3467466691111598
+  - 1.7229361837496693
+  rotate: -14.088966305436458
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.9786715379440571
+  - 1.8599475155674177
+  rotate: -6.688561423993349
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.0440591840658444
+  - 2.958054545668036
+  rotate: 10.69695727628914
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.960817050122213
+  - 0.4781154743049447
+  rotate: 306.41927443358986
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.5106539676399646
+  - 2.1594894333130767
+  rotate: -1.6590904090361391
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.3926291308804797
+  - 2.2001085441033505
+  rotate: -1.622534726899147
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.1374801805678372
+  - 0.0855871165960922
+  rotate: 309.0915380098182
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.348650005951249
+  - 0.06359208907965219
+  rotate: 306.26985652752967
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.135220289695079
+  - 1.897108023089026
+  rotate: -10.46748719738352
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.2314820362124346
+  - 0.4077292747328003
+  rotate: 314.28960876894246
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.7215055706536995
+  - 1.5610445085532687
+  rotate: -18.03416862531205
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.5608248958254478
+  - 0.7500691061039763
+  rotate: 318.85718027165785
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.78913331992828
+  - 0.4164547522501858
+  rotate: 307.65264373400174
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.5996573486484253
+  - 1.2198551255534316
+  rotate: 331.6139664903973
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.8722621840346054
+  - 0.6797086161665506
+  rotate: 313.2543793543688
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.3134426950646914
+  - 0.05920820697440787
+  rotate: 306.6178487032063
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.1347744056957445
+  - 2.046371545616163
+  rotate: -6.992728319637791
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.4446137363235474
+  - 1.09047093173669
+  rotate: 328.7315707073084
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.3925321880119692
+  - 1.495012386070865
+  rotate: 339.86440186994673
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.4355100513545256
+  - 0.8208842556589673
+  rotate: 321.79133500338634
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.397594204827823
+  - 2.0471194484671056
+  rotate: -5.413175738712624
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.2334374783339224
+  - 1.023697444354039
+  rotate: 328.13236642309954
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.0332096545145455
+  - 1.004036690302946
+  rotate: 328.63189518451395
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.05934270635821
+  - 2.884406281249486
+  rotate: 9.56307003366058
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.467590341607075
+  - 2.34583760341829
+  rotate: 2.595845874398492
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.8590057999256935
+  - 0.9314992647102932
+  rotate: 320.89203329472275
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.0820099212580403
+  - 1.189097109405449
+  rotate: 332.67316322114544
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.3035740680102572
+  - 1.3423945486166784
+  rotate: 335.8957520307461
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.65142426269689
+  - 0.17987010332667086
+  rotate: 304.46809677019394
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.0959750441252898
+  - 1.6970831410291356
+  rotate: -15.313344595532499
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.401102163703273
+  - 1.9186799279228444
+  rotate: -8.718933883224736
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.2569289934203995
+  - 2.9734152681779165
+  rotate: 13.299875372518898
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.8437672586966798
+  - 0.006638393188233227
+  rotate: 297.96023004684
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.5705882029910927
+  - 0.5467782813868588
+  rotate: 313.7084250681968
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.5863213404926106
+  - 1.1856458910113146
+  rotate: 330.6715086105777
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.0486737342815895
+  - 1.783807086752445
+  rotate: -13.395872375048071
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.965289795068515
+  - 0.6673657118481849
+  rotate: 311.51861123454114
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.6569519232579026
+  - 2.125789003542845
+  rotate: -1.2455822865087498
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.5403077582484668
+  - 1.1010716972861831
+  rotate: 328.493699825245
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.3991440234821813
+  - 0.6079786320531584
+  rotate: 316.9939708574324
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.9719943453971527
+  - 2.7409007819265434
+  rotate: 19.08021824605592
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.7937917739877682
+  - 2.7231979676211244
+  rotate: 15.637122361098193
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.1446939789399395
+  - 2.3535331921075953
+  rotate: -0.080122458627784
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.9948932619114657
+  - 1.693634067325314
+  rotate: -12.669086683887457
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.7196745207260244
+  - 2.071303175550991
+  rotate: -2.208659728931252
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.9393663397212015
+  - 1.9834223123335109
+  rotate: -2.789095641350656
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.9986807746756696
+  - 2.1937596332417932
+  rotate: 4.801659259080623
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.438275301054559
+  - 2.6016838807919127
+  rotate: 8.117846529618589
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.4035698450595087
+  - 2.6225655585908574
+  rotate: 8.167503393107296
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.7356421155149855
+  - 2.845681248770341
+  rotate: 17.332878685634
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.0317794790276644
+  - 1.5902391614388052
+  rotate: -17.90617522305115
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.9883450521391048
+  - 1.0499563145712325
+  rotate: 323.42089565443905
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.7432552592741588
+  - 1.5590212209682255
+  rotate: -18.07576178263554
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.876154770369241
+  - 1.47051112427088
+  rotate: 338.9596284203873
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.4820487050835318
+  - 2.096250530439473
+  rotate: -3.5390020755258433
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.9298636495065498
+  - 0.34527474765469646
+  rotate: 303.66812395713595
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.6870715921459556
+  - 2.292239781498264
+  rotate: 3.605064295226299
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.91897954989302
+  - 2.136187031947232
+  rotate: 1.9193678183680163
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.0403982474085574
+  - 2.909531533654122
+  rotate: 9.815860605956715
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.3565195274425546
+  - 1.1512554475897523
+  rotate: 330.7589424834622
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.5703353639140265
+  - 2.799665364695233
+  rotate: 13.961006556118434
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.7215147038852372
+  - 0.9102049194807778
+  rotate: 321.6530464893882
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.713313348749392
+  - 1.1280153717369596
+  rotate: 328.23914149518816
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.3481129770605587
+  - 1.205627845303726
+  rotate: 332.21044660439713
+  static: true
+- height: 0.06
+  kind: sign_blank
+  pos:
+  - 1.6432217883646838
+  - 0.2928678767319748
+  rotate: 306.9712240067594
+  static: true
+- height: 0.06
+  kind: duckie
+  pos:
+  - 1.7520814446722306
+  - 1.632324018614235
+  rotate: -15.670751464965548
+  static: true
+- height: 0.06
+  kind: bus
+  pos:
+  - 2.1
+  - 1.5
+  rotate: 90
+  static: true
+tile_size: 0.585
+tiles:
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+- - floor
+  - straight/W
+  - straight/W
+  - straight/W
+  - floor
+  - straight/W
+  - straight/W
+  - straight/W
+  - straight/W
+  - straight/W
+- - floor
+  - floor
+  - floor
+  - straight/W
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - straight/W
+- - floor
+  - straight/W
+  - floor
+  - straight/W
+  - straight/W
+  - straight/W
+  - straight/W
+  - straight/W
+  - floor
+  - straight/W
+- - floor
+  - straight/W
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - straight/W
+  - floor
+  - straight/W
+- - floor
+  - straight/W
+  - straight/W
+  - straight/W
+  - straight/W
+  - straight/W
+  - straight/W
+  - straight/W
+  - straight/W
+  - straight/W
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
