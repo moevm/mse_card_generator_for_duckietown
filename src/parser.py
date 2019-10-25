@@ -8,6 +8,6 @@ class Parser(object):
     @staticmethod
     def parse():
         return {
-            'width': 35,
-            'height': 35
+            'width': 15,
+            'height': 15
         }

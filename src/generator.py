@@ -16,7 +16,7 @@ class GeneratorRandom(object):
 
 
 class Generator(object):
-    ANY = lambda _: True
+    DEBUG = True
 
     @dataclass
     class GeneratorState:
@@ -36,48 +36,51 @@ class Generator(object):
         self._width = settings['width']
         self._height = settings['height']
         self._cells = [[self.Cell(Position(x, y)) for x in range(self._width)] for y in range(self._height)]
+        self.__cannot_be_used_as_node = []
 
         self._random = GeneratorRandom(self._width, self._height)
+        self._state = self.GeneratorState(self._height, self._width, list())
 
     def create(self):
         self._create_map()
+        self._generate_state()
 
     def get_state(self):
-        return self.GeneratorState(self._height, self._width, [[self._cells[i][j].accepted for j in range(self._width)] for i in range(self._height)])
+        return self._state
 
     def _on_board(self, p):
         return 0 <= p.x < self._width and 0 <= p.y < self._height
 
-    def _set_acception(self, _cell):
+    def _accept(self, _cell):
+        _cell.under_construction = False
         _cell.accepted = True
 
     def _create_map(self):
-        __local_cells_buffer = self._create_first_cycle()
-        __local_under_construction_cells_buffer = []
+        accepted_roads = self._create_first_cycle()
+        under_construction_roads = []
         checked_cells = []
-        start = random.choice(__local_cells_buffer)
+
+        start = random.choice(accepted_roads)
         current_cell = start
         is_new_cycle = True
-        exception = None
-        begin = None
-        end = None
         num = 0
 
         while True:
-            print()
-
-            for i in range(self._height):
-                for j in range(self._width):
-                    if self._cells[i][j].accepted:
-                        print('\033[92m' + '#' + '\x1b[0m', end=' ')
-                    elif self._cells[i][j].under_construction:
-                        print ('\033[91m' + '#' + '\x1b[0m', end=' ')
-                    else:
-                        print('\033[90m' + '0' + '\x1b[0m', end=' ')
-
+            if self.DEBUG:
                 print()
 
-            print(''.join(['\033[F'] * (self._height + 2)))
+                for i in range(self._height):
+                    for j in range(self._width):
+                        if self._cells[i][j].accepted:
+                            print('\033[92m' + '#' + '\x1b[0m', end=' ')
+                        elif self._cells[i][j].under_construction:
+                            print ('\033[91m' + '#' + '\x1b[0m', end=' ')
+                        else:
+                            print('\033[90m' + '0' + '\x1b[0m', end=' ')
+
+                    print()
+
+                print(''.join(['\033[F'] * (self._height + 2)))
 
             if is_new_cycle:
                 num += 1
@@ -92,8 +95,8 @@ class Generator(object):
                     return
 
                 current_cell.under_construction = True
-                __local_under_construction_cells_buffer.append(begin)
-                __local_under_construction_cells_buffer.append(current_cell)
+                under_construction_roads.append(begin)
+                under_construction_roads.append(current_cell)
                 is_new_cycle = False
                 continue
 
@@ -105,27 +108,21 @@ class Generator(object):
             actual = []
 
             for next_cell in neighbours['requested']:
-
                 neibs = self._get_neighbours(next_cell, lambda c: c.accepted)
 
                 if len(neibs['requested']) == 1:
-                    end = next_cell
-                    #print('yey')
-
-                    if neibs['requested'][0] in (self._get_neighbours(__local_under_construction_cells_buffer[-2], lambda _: True)['all']):
-                        #print("aaaaaa")
+                    if neibs['requested'][0] in (self._get_neighbours(under_construction_roads[-2], lambda _: True)['all']):
                         continue
 
-                    __local_under_construction_cells_buffer.append(next_cell)
+                    under_construction_roads.append(next_cell)
                     next_cell.under_construction = True
 
-                    for cell in __local_under_construction_cells_buffer:
-                        cell.under_construction = False
-                        cell.accepted = True
+                    for cell in under_construction_roads:
+                        self._accept(cell)
 
-                    __local_cells_buffer.extend(__local_under_construction_cells_buffer[1:])
-                    current_cell = random.choice(__local_cells_buffer)
-                    __local_under_construction_cells_buffer = [current_cell]
+                    accepted_roads.extend(under_construction_roads[1:])
+                    current_cell = random.choice(accepted_roads)
+                    under_construction_roads = [current_cell]
                     is_new_cycle = True
 
                     break
@@ -144,57 +141,81 @@ class Generator(object):
                 current_cell.under_construction = False
                 current_cell.checked = True
                 checked_cells.append(current_cell)
-                __local_under_construction_cells_buffer.remove(current_cell)
+                under_construction_roads.remove(current_cell)
 
-                if len(__local_under_construction_cells_buffer) == 1:
-                    last = __local_under_construction_cells_buffer[0]
+                if len(under_construction_roads) == 1:
+                    last = under_construction_roads[0]
                     last.under_construction = False
+                    #self.__cannot_be_used_as_node.append(last)
                     is_new_cycle = True
                 else:
-                    current_cell = __local_under_construction_cells_buffer[-1]
+                    current_cell = under_construction_roads[-1]
 
                 continue
 
             nc = random.choice(actual)
 
             current_cell = nc
-            __local_under_construction_cells_buffer.append(nc)
+            under_construction_roads.append(nc)
             nc.under_construction = True
 
-    def _first_cycle_cell(self, _current_cell):
-        current_cycle_roads = []
+    def _generate_state(self):
+        map = [[0] * self._width for _ in range(self._height)]
 
+        for i in range(self._height):
+            for j in range(self._width):
+                cell = self._cells[i][j]
+
+                if not cell.accepted:
+                    map[i][j] = 0
+                    continue
+
+                neighbours = self._get_neighbours(cell, lambda c: c.accepted)['requested']
+                neighbour_data = 0
+
+                for neighbour in neighbours:
+                    if neighbour.position.y < cell.position.y:
+                        neighbour_data |= 1
+                    elif neighbour.position.x > cell.position.x:
+                        neighbour_data |= 2
+                    elif neighbour.position.y > cell.position.y:
+                        neighbour_data |= 4
+                    elif neighbour.position.x < cell.position.x:
+                        neighbour_data |= 8
+
+                map[i][j] = neighbour_data
+
+        self._state = self.GeneratorState(self._height, self._width, map)
+
+    def _first_cycle_cell(self, _current_cell):
         while True:
             neibs = self._get_neighbours(_current_cell, lambda c: not c.under_construction and not c.accepted and len(self._get_neighbours(c, lambda _: _.accepted)['requested']) == 1)
             requested = neibs['requested']
             correct_cells = []
 
             if len(requested) == 0:
-                current_cycle_roads.append(_current_cell)
-                lst = list(filter(lambda c: c not in current_cycle_roads, neibs['roads']))
+                self.__cannot_be_used_as_node.append(_current_cell)
+                lst = list(filter(lambda c: c not in self.__cannot_be_used_as_node, neibs['roads']))
 
                 if len(lst) == 0:
-                    return None
+                    return [None, None]
 
                 _current_cell = random.choice(lst)
 
                 continue
 
-            #print(len(neibs['requested']))
-
             for _cell in requested:
                 dx = _cell.position.x - _current_cell.position.x
                 dy = _cell.position.y - _current_cell.position.y
-                sum = 0
-                flag = True
 
-                #print(dx, dy)
+                counter = 0
+                flag = True
 
                 current_position = Position(_cell.position.x, _cell.position.y)
 
                 while self._on_board(current_position):
                     if self._cells[current_position.y][current_position.x].accepted and flag:
-                        sum += 1
+                        counter += 1
                         flag = False
                     else:
                         flag = True
@@ -202,14 +223,12 @@ class Generator(object):
                     current_position.x += dx
                     current_position.y += dy
 
-                if sum % 2 == 0:
+                if counter % 2 == 0:
                     correct_cells.append(_cell)
 
-            #print(len(correct_cells))
-
             if len(correct_cells) == 0:
-                current_cycle_roads.append(_current_cell)
-                _current_cell = random.choice(list(filter(lambda c: c not in current_cycle_roads, neibs['roads'])))
+                self.__cannot_be_used_as_node.append(_current_cell)
+                _current_cell = random.choice(list(filter(lambda c: c not in self.__cannot_be_used_as_node, neibs['roads'])))
 
                 continue
 
