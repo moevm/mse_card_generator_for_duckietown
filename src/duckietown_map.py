@@ -9,6 +9,21 @@ class DuckietownMap(object):
     DEFAULT_MAP_NAME = './maps/new_map.yaml'
     DEFAULT_TILE_SIZE = 0.585
 
+    CELLS = {
+        0: 'floor',
+        5: 'straight/N',
+        10: 'straight/E',
+        3: 'curve_right/W',
+        6: 'curve_right/N',
+        12: 'curve_left/N',
+        9: 'curve_left/E',
+        7: '3way_left/S',
+        11: '3way_left/E',
+        14: '3way_left/W',
+        13: '3way_left/N',
+        15: '4way'
+    }
+
     def __init__(self, generator=None):
         self._map = list()
         self._data = {}
@@ -26,7 +41,7 @@ class DuckietownMap(object):
 
         for i in range(state.height):
             for j in range(state.width):
-                self._map[i][j] = 'straight/W' if state.map[i][j] else 'floor'
+                self._map[i][j] = self.CELLS[state.map[i][j]]
 
         self._create_objects()
 

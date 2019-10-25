@@ -1,1053 +1,1053 @@
 objects:
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.0222729918155746
-  - 2.9184414574250495
-  rotate: 9.790140133968919
+  - 1.9468704535497465
+  - 0.237734574350157
+  rotate: 300.8984163612671
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.7227553498240564
-  - 0.06592816465867701
-  rotate: 301.0996839842037
+  - 1.1381098279600255
+  - 2.8702377906385115
+  rotate: 10.119931532329417
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.042458616020885
-  - 1.1047995101013266
-  rotate: 330.86440356686967
+  - 1.1446815539241577
+  - 1.5647144339315422
+  rotate: -18.42614432243451
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.1644223832966394
-  - 0.16407211124399568
-  rotate: 310.23085956035567
+  - 1.4641826208702322
+  - 0.402285628364484
+  rotate: 311.66641804878986
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.5362739332017705
-  - 0.7889835982673497
-  rotate: 320.0959374054422
+  - 1.8941029309836233
+  - 0.6110122159692438
+  rotate: 311.03209221930547
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.7348132587823715
-  - 0.23358938389879247
-  rotate: 304.3429361757617
+  - 1.6398381356712366
+  - 1.8731701086714656
+  rotate: -8.65637536608628
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.775677046330487
-  - 2.3636618592862364
-  rotate: 6.604921043934496
+  - 1.161546368686345
+  - 1.769921249050094
+  rotate: -13.415645220831152
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.1210941010763733
-  - 0.3575677324666823
-  rotate: 314.3480834309846
+  - 1.746558596744264
+  - 2.7494029048055566
+  rotate: 15.471517260427504
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.9409730333953539
-  - 0.11035078532418152
-  rotate: 298.2875694319268
+  - 1.506234558723413
+  - 0.47062638326731465
+  rotate: 312.6928628917318
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.019910062769131
-  - 1.149752795849741
-  rotate: 331.9616423268433
+  - 1.7596619320214242
+  - 1.9080120819238333
+  rotate: -6.805633559542997
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.2461716346604366
-  - 2.913285466154882
-  rotate: 12.090176932620807
+  - 1.2195527997021829
+  - 0.9620887673936975
+  rotate: 326.72769217299526
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.0402713543633317
-  - 0.3639095329960128
-  rotate: 315.20890205112715
+  - 1.5247365120436018
+  - 0.8572939857665869
+  rotate: 321.97628511176856
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.026318701248402
-  - 1.034340406667177
-  rotate: 329.33908203240014
+  - 1.0656029455905047
+  - 0.15777226909786468
+  rotate: 311.1294412560835
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.6837536572374208
-  - 2.965085771389406
-  rotate: 18.89158688495945
+  - 1.4565163179277674
+  - 1.1839322431813755
+  rotate: 331.20767346247214
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.9774718022807685
-  - 0.385299695932505
-  rotate: 303.7907352760677
+  - 1.2508375320611522
+  - 1.8732851401265778
+  rotate: -10.576726545394393
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.9035370781748167
-  - 1.4429003081327523
-  rotate: 337.95161081044273
+  - 1.075427213829214
+  - 1.554785432238817
+  rotate: -18.705569904879894
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.5466380129547672
-  - 0.38331095381336244
-  rotate: 310.2444576416452
+  - 1.701540257555399
+  - 0.5894203645805812
+  rotate: 313.146412731233
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.8275876491409915
-  - 2.6607930166784506
-  rotate: 14.76385834756448
+  - 1.35521594914107
+  - 1.9359717990377452
+  rotate: -8.509990545842527
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.951945383351236
-  - 2.9030296364324046
-  rotate: 22.186579856437987
+  - 1.053251247693492
+  - 2.985808178466921
+  rotate: 11.268559034143436
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.7034203904825995
-  - 0.010394992204858955
-  rotate: 300.3367226769169
+  - 1.5845400991559198
+  - 1.5602080176476303
+  rotate: -18.19963348166263
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.3946975263073735
-  - 2.254289359311233
-  rotate: -0.288375257989685
+  - 1.0335770321314635
+  - 0.7676874430939721
+  rotate: 323.4631716418806
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.2474881991393851
-  - 0.08150865718416322
-  rotate: 307.79983684212345
+  - 1.361750491771315
+  - 2.881389058735224
+  rotate: 12.863970164611771
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.7947075753390118
-  - 1.4889094782584436
-  rotate: 339.6273770290501
+  - 1.2563225913778355
+  - 1.829427367796548
+  rotate: -11.647242013737355
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.3025600929156345
-  - 2.2054355556226906
-  rotate: -2.2020142647948546
+  - 1.0712816772278093
+  - 2.365484590213928
+  rotate: -0.3862481744777142
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.0825495172625497
-  - 1.8581912081576317
-  rotate: -11.571862205450657
+  - 1.3580455157830882
+  - 1.8952935065494727
+  rotate: -9.543822215883068
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.5786257139056703
-  - 1.604139738065243
-  rotate: -16.89756706311607
+  - 1.0005249643288496
+  - 1.1955852321095288
+  rotate: 333.05606089198045
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.5186851158628856
-  - 2.5432445595175777
-  rotate: 7.768667753917526
+  - 1.7889051187942935
+  - 1.6043671222492593
+  rotate: -16.509605263145346
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.63726679870692
-  - 0.3887371192818774
-  rotate: 309.1806902033194
+  - 1.5649318781318953
+  - 1.8335600330628403
+  rotate: -10.219674850689188
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.684788680458916
-  - 0.3817735364358549
-  rotate: 308.36564268870063
+  - 1.4711237788209293
+  - 2.839655885062431
+  rotate: 13.436564763725954
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.2558570660080077
-  - 1.3489914524385744
-  rotate: 336.15036599130883
+  - 1.68261255380617
+  - 0.0011707894925353513
+  rotate: 300.4870389551361
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.6712877163359154
-  - 1.9223014351516483
-  rotate: -6.996729849425122
+  - 1.385148710537881
+  - 1.5978512189730647
+  rotate: -17.35089351892546
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.7266261010886286
-  - 0.07665183352911342
-  rotate: 301.24871998454984
+  - 1.5348975741298387
+  - 1.5478553494981857
+  rotate: -18.604974640948456
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.9306131685243284
-  - 0.10661541639468475
-  rotate: 298.399637562312
+  - 1.8527855848551664
+  - 2.644901676469942
+  rotate: 14.80135642169526
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.137139492323883
-  - 0.7682080103618272
-  rotate: 322.7919350920495
+  - 1.4311857785389384
+  - 2.0058659751245846
+  rotate: -6.259659337514336
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.7601043886418664
-  - 1.895920262759864
-  rotate: -7.180408886877814
+  - 1.4966003412145006
+  - 2.821006699226099
+  rotate: 13.400159810458206
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.84935016920684
-  - 1.3157472659617926
-  rotate: 333.6307614135649
+  - 1.1898469241236653
+  - 0.4115775071177379
+  rotate: 314.77265526156015
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.0907870466623533
-  - 0.5926077274250685
-  rotate: 319.36190410288344
+  - 1.0974467696166403
+  - 1.3594532435222153
+  rotate: 336.65207460712537
   static: true
 - height: 0.06
   kind: duckie
-  pos:
-  - 1.8644002242079218
-  - 2.888125924052242
-  rotate: 20.32111185047674
-  static: true
-- height: 0.06
-  kind: sign_blank
   pos:
-  - 1.7867863002045812
-  - 2.524448052789572
-  rotate: 10.878099831240604
+  - 1.778840820566855
+  - 0.16717031055799636
+  rotate: 302.24654818146007
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.4760162636210588
-  - 2.6674628286919857
-  rotate: 9.976964489674003
+  - 1.9304048989215725
+  - 0.6130450614489966
+  rotate: 310.529852143275
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.6069419946462906
-  - 1.335171055815723
-  rotate: 335.0237947793619
+  - 1.6927113706653882
+  - 2.021493911885875
+  rotate: -3.9044818729670396
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.0083516170069775
-  - 0.7163453213277624
-  rotate: 322.5409841357167
+  - 1.098357480778527
+  - 0.42413501756159766
+  rotate: 315.8690284683703
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.7694103740672553
-  - 0.7361032021763869
-  rotate: 316.182933905194
+  - 1.7944427524284319
+  - 1.5426240514481344
+  rotate: -18.568403367548825
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.9555320941116066
-  - 0.08455322979180335
-  rotate: 297.49591314077986
+  - 1.0811970855610864
+  - 0.4394148638949218
+  rotate: 316.3237399556259
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.4228752823230133
-  - 2.7048027160029435
-  rotate: 10.115185814155382
+  - 1.4170340549325489
+  - 2.633696552646669
+  rotate: 8.558140970048413
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.868868076266101
-  - 2.7748754301252685
-  rotate: 18.010806380857133
+  - 1.602499474327411
+  - 0.9923602056485119
+  rotate: 325.02236973839695
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.244154932476732
-  - 2.239377204721389
-  rotate: -1.852893023696197
+  - 1.9055778909660055
+  - 0.31041046411228645
+  rotate: 303.27358367652903
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.734644003326805
-  - 2.9122310391169353
-  rotate: 18.65874436138307
+  - 1.7718525969820655
+  - 2.751227656381367
+  rotate: 15.90560288297226
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.0126687361924886
-  - 0.5103610446592999
-  rotate: 318.30378582685387
+  - 1.5729722856950619
+  - 0.7006839461245954
+  rotate: 317.47170779741407
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.672193403362174
-  - 0.33777559024309567
-  rotate: 307.54945599729973
+  - 1.5155693304041788
+  - 0.5971226253655649
+  rotate: 315.5353877501374
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.9911454487387519
-  - 0.4575768409020585
-  rotate: 305.3605476095505
+  - 1.9220789833605942
+  - 0.4091820180446055
+  rotate: 305.3438656936288
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.9375636657745896
-  - 1.3551755166846515
-  rotate: 334.7043031007239
+  - 1.824956161150251
+  - 2.312330973963464
+  rotate: 5.871577263088682
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.9378891144604697
-  - 1.3589607214120647
-  rotate: 334.8408886951383
+  - 1.9560118212694046
+  - 0.5718949498594965
+  rotate: 308.9895488043129
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.2351948367287382
-  - 2.608542428755186
-  rotate: 6.080121635428014
+  - 1.966139861813148
+  - 2.5409445680385128
+  rotate: 14.162530998241806
   static: true
 - height: 0.06
   kind: duckie
+  pos:
+  - 1.7075568832731136
+  - 1.2188177605732586
+  rotate: 331.08461469833577
+  static: true
+- height: 0.06
+  kind: sign_blank
   pos:
-  - 1.5497349743879387
-  - 2.339591568199856
-  rotate: 3.291939231968371
+  - 1.1263821406897117
+  - 0.5911279311827589
+  rotate: 319.0478666260707
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.4742151481751389
-  - 0.08388609534010161
-  rotate: 305.0447358875727
+  - 1.2120098944074589
+  - 2.1965371564862535
+  rotate: -3.0680787520365698
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.4043578332069337
-  - 0.46459076867551463
-  rotate: 313.7070678533664
+  - 1.0826682287489668
+  - 0.500134594084303
+  rotate: 317.5288594201135
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.3169893163681383
-  - 1.2325488126412076
-  rotate: 333.0152252891936
+  - 1.3275185000007785
+  - 1.625876299896693
+  rotate: -16.68391833986223
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.151818920504963
-  - 2.153296196983451
-  rotate: -4.452703109470804
+  - 1.6110505129232164
+  - 0.023428500534425245
+  rotate: 301.98564267456493
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.9346628243991701
-  - 1.439372853618453
-  rotate: 337.78198315429574
+  - 1.9498458608002311
+  - 2.78602204637153
+  rotate: 19.679410802665387
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.0106050859392937
-  - 2.54467562130866
-  rotate: 2.7653775458724397
+  - 1.1001196627791887
+  - 0.2607011298250358
+  rotate: 312.68815711894786
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.419082745622506
-  - 0.8174260928067558
-  rotate: 321.8396879887001
+  - 1.0894669813600084
+  - 1.7303929486769019
+  rotate: -14.540391530404463
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.7196889917983946
-  - 0.17959175151023699
-  rotate: 303.43667746152164
+  - 1.3050792401038915
+  - 2.4372059693065173
+  rotate: 3.1219259001979367
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.6994619505456687
-  - 0.792106539720289
-  rotate: 318.53740038737783
+  - 1.1893633239402437
+  - 2.942874817240022
+  rotate: 11.982676572124177
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.0198205325239513
-  - 1.8201369626926822
-  rotate: -12.645034634585244
+  - 1.2519969168283693
+  - 2.1427017645471826
+  rotate: -4.044821594957682
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.3421531912477405
-  - 1.2820901222553127
-  rotate: 334.2335421803671
+  - 1.3651232065571257
+  - 2.7921752672239744
+  rotate: 11.185229957591929
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.0168208681263868
-  - 1.085113681338845
-  rotate: 330.5147101110888
+  - 1.1092799237919315
+  - 1.508416069259768
+  rotate: -19.79830208414262
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.1754425542720055
-  - 2.7591728146060763
-  rotate: 8.44364384754914
+  - 1.0843561792086784
+  - 1.8210223789353128
+  rotate: -12.43014137989337
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.3860915951060322
-  - 0.9238424156548899
-  rotate: 324.7540365861706
+  - 1.2609357610322616
+  - 2.347030950942699
+  rotate: 0.7214726001909639
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.6832189129535635
-  - 2.9312566604004426
-  rotate: 18.23097209479974
+  - 1.4437747356862252
+  - 1.3530803511720428
+  rotate: 335.91309643604563
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.2180361540078126
-  - 2.124855426103239
-  rotate: -4.68643440315833
+  - 1.884207856300193
+  - 2.039685346100716
+  rotate: -1.5303370099974245
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.9821601961806574
-  - 1.4644766152300273
-  rotate: 338.6592995361498
+  - 1.803630578974372
+  - 1.6747931506784355
+  rotate: -14.117029865557328
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.8395184273777576
-  - 2.492214288911485
-  rotate: 10.860263664284076
+  - 1.0849017712028817
+  - 2.460966504355928
+  rotate: 1.6975871782193508
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.6472520759229905
-  - 0.6506213611113477
-  rotate: 315.3712601214782
+  - 1.3213552826756207
+  - 0.28208709646442587
+  rotate: 310.79379761494556
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.4627597389981708
-  - 0.039525951839414764
-  rotate: 304.36369761716713
+  - 1.5833468664834816
+  - 1.1088892423012773
+  rotate: 328.46661174739506
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.3559890682981863
-  - 0.272507209802914
-  rotate: 310.2079261687333
+  - 1.2383701935624787
+  - 1.0973661128257637
+  rotate: 329.90549396553774
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.0855104900856816
-  - 2.1898918402982113
-  rotate: -4.053777119156422
+  - 1.2340709930878493
+  - 1.2228166242837661
+  rotate: 333.0258513357637
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.2159837060121157
-  - 1.0623764893745185
-  rotate: 329.15343487493965
+  - 1.2812823660642179
+  - 2.6567453738770173
+  rotate: 7.535627633628366
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.8350709549325968
-  - 0.022927147027932415
-  rotate: 298.421566734433
+  - 1.031540765693054
+  - 2.661613379619998
+  rotate: 5.2008481912498326
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.201100528339712
-  - 1.5573235984352705
-  rotate: -18.571612268500587
+  - 1.2762102740601295
+  - 1.4697657746740933
+  rotate: 339.22106538951823
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.8975571981220811
-  - 2.6793741699254374
-  rotate: 16.35251788566839
+  - 1.2200676903054557
+  - 2.91504586263551
+  rotate: 11.825912941175545
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.324570704816809
-  - 2.1540932244790345
-  rotate: -3.265377135004769
+  - 1.582523811365863
+  - 2.8879652848395216
+  rotate: 15.898902167738896
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.595750898139064
-  - 2.0789871419118158
-  rotate: -3.088100214795247
+  - 1.1071584621650117
+  - 1.709679605220868
+  rotate: -14.992084785742662
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.4941514867494017
-  - 0.8546669639201487
-  rotate: 322.1656818897703
+  - 1.3173290555615327
+  - 0.15887264335817664
+  rotate: 308.43163671970365
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.3467466691111598
-  - 1.7229361837496693
-  rotate: -14.088966305436458
+  - 1.0019902892251955
+  - 2.938288189916406
+  rotate: 9.932203890016467
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.9786715379440571
-  - 1.8599475155674177
-  rotate: -6.688561423993349
+  - 1.2594787968370382
+  - 2.648401661597563
+  rotate: 7.137864489288262
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.0440591840658444
-  - 2.958054545668036
-  rotate: 10.69695727628914
+  - 1.4998039743937435
+  - 2.7787856860082574
+  rotate: 12.59200874609212
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.960817050122213
-  - 0.4781154743049447
-  rotate: 306.41927443358986
+  - 1.6762140198205655
+  - 1.0276426243769206
+  rotate: 325.47955870553733
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.5106539676399646
-  - 2.1594894333130767
-  rotate: -1.6590904090361391
+  - 1.3505264225098388
+  - 1.7013379600673586
+  rotate: -14.648804065636341
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.3926291308804797
-  - 2.2001085441033505
-  rotate: -1.622534726899147
+  - 1.3796315174292566
+  - 1.168620303571833
+  rotate: 331.117438477648
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.1374801805678372
-  - 0.0855871165960922
-  rotate: 309.0915380098182
+  - 1.5279742064683213
+  - 1.3714064161066464
+  rotate: 336.2690888704702
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.348650005951249
-  - 0.06359208907965219
-  rotate: 306.26985652752967
+  - 1.5314679772729956
+  - 2.937933782516598
+  rotate: 16.14663171519547
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.135220289695079
-  - 1.897108023089026
-  rotate: -10.46748719738352
+  - 1.0412919891328596
+  - 0.41076586706651175
+  rotate: 316.1061414876427
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.2314820362124346
-  - 0.4077292747328003
-  rotate: 314.28960876894246
+  - 1.2594189666765114
+  - 2.7408775061343227
+  rotate: 8.978539770229958
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.7215055706536995
-  - 1.5610445085532687
-  rotate: -18.03416862531205
+  - 1.1372861811573043
+  - 2.669146309007405
+  rotate: 6.327676305688243
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.5608248958254478
-  - 0.7500691061039763
-  rotate: 318.85718027165785
+  - 1.797356289548768
+  - 0.3755661578752717
+  rotate: 306.5590415306481
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.78913331992828
-  - 0.4164547522501858
-  rotate: 307.65264373400174
+  - 1.1885205266371934
+  - 2.362413076793021
+  rotate: 0.46054686770554554
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.5996573486484253
-  - 1.2198551255534316
-  rotate: 331.6139664903973
+  - 1.9100277911327157
+  - 2.17994198100731
+  rotate: 3.1536803399415305
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.8722621840346054
-  - 0.6797086161665506
-  rotate: 313.2543793543688
+  - 1.8741132639839635
+  - 2.8285539603502245
+  rotate: 19.25314393992639
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.3134426950646914
-  - 0.05920820697440787
-  rotate: 306.6178487032063
+  - 1.6289755149933707
+  - 1.5051444408887578
+  rotate: -19.84246384241831
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.1347744056957445
-  - 2.046371545616163
-  rotate: -6.992728319637791
+  - 1.3351384295066757
+  - 0.510184527319391
+  rotate: 315.42922832562454
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.4446137363235474
-  - 1.09047093173669
-  rotate: 328.7315707073084
+  - 1.566736727897971
+  - 1.3764985469917645
+  rotate: 336.3447762899957
   static: true
 - height: 0.06
   kind: duckie
-  pos:
-  - 1.3925321880119692
-  - 1.495012386070865
-  rotate: 339.86440186994673
-  static: true
-- height: 0.06
-  kind: sign_blank
   pos:
-  - 1.4355100513545256
-  - 0.8208842556589673
-  rotate: 321.79133500338634
+  - 1.3047771109893933
+  - 1.4711003106978136
+  rotate: 339.2457555968599
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.397594204827823
-  - 2.0471194484671056
-  rotate: -5.413175738712624
+  - 1.655888239915253
+  - 0.34582781004482355
+  rotate: 307.95883102009543
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.2334374783339224
-  - 1.023697444354039
-  rotate: 328.13236642309954
+  - 1.8605693362094082
+  - 1.6133844066866887
+  rotate: -16.043675557724185
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.0332096545145455
-  - 1.004036690302946
-  rotate: 328.63189518451395
+  - 1.1720589800525087
+  - 0.3316990687719831
+  rotate: 313.3497472831602
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.05934270635821
-  - 2.884406281249486
-  rotate: 9.56307003366058
+  - 1.354494361506125
+  - 0.44967997999752196
+  rotate: 313.91620505697875
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.467590341607075
-  - 2.34583760341829
-  rotate: 2.595845874398492
+  - 1.547991476321679
+  - 1.6150028006415358
+  rotate: -16.628310167559846
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.8590057999256935
-  - 0.9314992647102932
-  rotate: 320.89203329472275
+  - 1.5928364396616415
+  - 2.4391161644896444
+  rotate: 6.216331967543425
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.0820099212580403
-  - 1.189097109405449
-  rotate: 332.67316322114544
+  - 1.2177853542336987
+  - 0.07020387893381008
+  rotate: 307.933060973221
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.3035740680102572
-  - 1.3423945486166784
-  rotate: 335.8957520307461
+  - 1.4290444710292884
+  - 1.2989633050041076
+  rotate: 334.45542129918863
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.65142426269689
-  - 0.17987010332667086
-  rotate: 304.46809677019394
+  - 1.9823173585866947
+  - 0.6314995649311907
+  rotate: 310.2194658558043
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.0959750441252898
-  - 1.6970831410291356
-  rotate: -15.313344595532499
+  - 1.2422616788762348
+  - 0.7964906782192286
+  rotate: 322.6930107086762
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.401102163703273
-  - 1.9186799279228444
-  rotate: -8.718933883224736
+  - 1.2565190071311507
+  - 0.7066039737813025
+  rotate: 320.5241095468485
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.2569289934203995
-  - 2.9734152681779165
-  rotate: 13.299875372518898
+  - 1.0111293124067664
+  - 1.97014462593859
+  rotate: -9.30294230364143
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.8437672586966798
-  - 0.006638393188233227
-  rotate: 297.96023004684
+  - 1.7433001530479317
+  - 1.6853689082077419
+  rotate: -13.976377145280082
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.5705882029910927
-  - 0.5467782813868588
-  rotate: 313.7084250681968
+  - 1.4157277331588727
+  - 1.7241909665223554
+  rotate: -13.86068772432668
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.5863213404926106
-  - 1.1856458910113146
-  rotate: 330.6715086105777
+  - 1.829899579365045
+  - 2.953420761686905
+  rotate: 21.03173080685457
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.0486737342815895
-  - 1.783807086752445
-  rotate: -13.395872375048071
+  - 1.3871225806147858
+  - 1.892817526402732
+  rotate: -9.468049065452078
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.965289795068515
-  - 0.6673657118481849
-  rotate: 311.51861123454114
+  - 1.8934712367430522
+  - 2.546834010505805
+  rotate: 13.088763012300035
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.6569519232579026
-  - 2.125789003542845
-  rotate: -1.2455822865087498
+  - 1.1088191066038575
+  - 0.8774047686015976
+  rotate: 325.40585080184985
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.5403077582484668
-  - 1.1010716972861831
-  rotate: 328.493699825245
+  - 1.0822257926883685
+  - 1.066021961195101
+  rotate: 329.8240629238809
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.3991440234821813
-  - 0.6079786320531584
-  rotate: 316.9939708574324
+  - 1.188639118290161
+  - 1.8981444037328434
+  rotate: -10.226406217414649
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.9719943453971527
-  - 2.7409007819265434
-  rotate: 19.08021824605592
+  - 1.2361624149304697
+  - 2.6178309788720435
+  rotate: 6.279101417210853
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.7937917739877682
-  - 2.7231979676211244
-  rotate: 15.637122361098193
+  - 1.5832811184981366
+  - 0.15317799419735667
+  rotate: 304.90541457517816
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.1446939789399395
-  - 2.3535331921075953
-  rotate: -0.080122458627784
+  - 1.7851406267848295
+  - 0.6696311302680236
+  rotate: 314.16281516247545
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.9948932619114657
-  - 1.693634067325314
-  rotate: -12.669086683887457
+  - 1.7901754605342823
+  - 1.0503872874584177
+  rotate: 325.2671279924764
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.7196745207260244
-  - 2.071303175550991
-  rotate: -2.208659728931252
+  - 1.7093243139829597
+  - 2.4554628348314993
+  rotate: 8.083342089817279
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.9393663397212015
-  - 1.9834223123335109
-  rotate: -2.789095641350656
+  - 1.206647681646223
+  - 1.1834263366332123
+  rotate: 332.1405770168867
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.9986807746756696
-  - 2.1937596332417932
-  rotate: 4.801659259080623
+  - 1.1212074025361711
+  - 2.709627167842285
+  rotate: 6.953549383965708
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.438275301054559
-  - 2.6016838807919127
-  rotate: 8.117846529618589
+  - 1.4682935242519686
+  - 0.45980710031341687
+  rotate: 312.88846555272573
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.4035698450595087
-  - 2.6225655585908574
-  rotate: 8.167503393107296
+  - 1.4773110931919202
+  - 1.6267572602434326
+  rotate: -16.41409464838398
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.7356421155149855
-  - 2.845681248770341
-  rotate: 17.332878685634
+  - 1.8935028954841067
+  - 0.7284852255608629
+  rotate: 314.3475118494006
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.0317794790276644
-  - 1.5902391614388052
-  rotate: -17.90617522305115
+  - 1.405630356201416
+  - 2.1012373592060913
+  rotate: -3.982647064525196
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.9883450521391048
-  - 1.0499563145712325
-  rotate: 323.42089565443905
+  - 1.3331412080771448
+  - 0.826677755890789
+  rotate: 322.73807014316145
   static: true
 - height: 0.06
-  kind: sign_blank
+  kind: duckie
   pos:
-  - 1.7432552592741588
-  - 1.5590212209682255
-  rotate: -18.07576178263554
+  - 1.965775218962308
+  - 1.9377176057850123
+  rotate: -4.076438739072216
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.876154770369241
-  - 1.47051112427088
-  rotate: 338.9596284203873
+  - 1.6101830240386192
+  - 2.1728808582240253
+  rotate: -0.40141791145904904
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.4820487050835318
-  - 2.096250530439473
-  rotate: -3.5390020755258433
+  - 1.1291304751756424
+  - 1.6914428644272452
+  rotate: -15.383499171062454
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.9298636495065498
-  - 0.34527474765469646
-  rotate: 303.66812395713595
+  - 1.496874171867118
+  - 0.475146999272682
+  rotate: 312.90449452520784
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.6870715921459556
-  - 2.292239781498264
-  rotate: 3.605064295226299
+  - 1.513098073097789
+  - 0.3016093780259915
+  rotate: 308.9039168570698
   static: true
 - height: 0.06
-  kind: duckie
+  kind: sign_blank
   pos:
-  - 1.91897954989302
-  - 2.136187031947232
-  rotate: 1.9193678183680163
+  - 1.9371408179106653
+  - 1.0455806492996174
+  rotate: 323.78760075618885
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.0403982474085574
-  - 2.909531533654122
-  rotate: 9.815860605956715
+  - 1.749639448213866
+  - 0.5080643151732934
+  rotate: 310.4596145321316
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.3565195274425546
-  - 1.1512554475897523
-  rotate: 330.7589424834622
+  - 1.335714252866471
+  - 2.5906995170530633
+  rotate: 6.745982497144894
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.5703353639140265
-  - 2.799665364695233
-  rotate: 13.961006556118434
+  - 1.0222919025489672
+  - 2.610715356686384
+  rotate: 4.145900554913226
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.7215147038852372
-  - 0.9102049194807778
-  rotate: 321.6530464893882
+  - 1.1422289833804893
+  - 1.9432666154387603
+  rotate: -9.352539341107416
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.713313348749392
-  - 1.1280153717369596
-  rotate: 328.23914149518816
+  - 1.424401650074288
+  - 0.22028584018273933
+  rotate: 308.3440120785574
   static: true
 - height: 0.06
   kind: duckie
+  pos:
+  - 1.55546486954107
+  - 0.6362384227262688
+  rotate: 316.04923034298804
+  static: true
+- height: 0.06
+  kind: sign_blank
   pos:
-  - 1.3481129770605587
-  - 1.205627845303726
-  rotate: 332.21044660439713
+  - 1.7520975681837272
+  - 0.21988309253090166
+  rotate: 303.78195185877667
   static: true
 - height: 0.06
   kind: sign_blank
   pos:
-  - 1.6432217883646838
-  - 0.2928678767319748
-  rotate: 306.9712240067594
+  - 1.0780621469945926
+  - 2.143237592122407
+  rotate: -5.126299090470411
   static: true
 - height: 0.06
   kind: duckie
   pos:
-  - 1.7520814446722306
-  - 1.632324018614235
-  rotate: -15.670751464965548
+  - 1.5220690350134465
+  - 2.265069103586726
+  rotate: 1.1466065512528303
   static: true
 - height: 0.06
   kind: bus
@@ -1068,56 +1068,11 @@ tiles:
   - floor
   - floor
   - floor
-- - floor
-  - straight/W
-  - straight/W
-  - straight/W
-  - floor
-  - straight/W
-  - straight/W
-  - straight/W
-  - straight/W
-  - straight/W
-- - floor
-  - floor
-  - floor
-  - straight/W
   - floor
   - floor
   - floor
   - floor
   - floor
-  - straight/W
-- - floor
-  - straight/W
-  - floor
-  - straight/W
-  - straight/W
-  - straight/W
-  - straight/W
-  - straight/W
-  - floor
-  - straight/W
-- - floor
-  - straight/W
-  - floor
-  - floor
-  - floor
-  - floor
-  - floor
-  - straight/W
-  - floor
-  - straight/W
-- - floor
-  - straight/W
-  - straight/W
-  - straight/W
-  - straight/W
-  - straight/W
-  - straight/W
-  - straight/W
-  - straight/W
-  - straight/W
 - - floor
   - floor
   - floor
@@ -1125,6 +1080,206 @@ tiles:
   - floor
   - floor
   - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - curve_right/N
+  - straight/E
+  - 3way_left/W
+  - straight/E
+  - curve_left/N
+  - floor
+  - floor
+  - floor
+  - floor
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - straight/N
+  - floor
+  - straight/N
+  - floor
+  - straight/N
+  - floor
+  - floor
+  - floor
+  - floor
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - 3way_left/S
+  - straight/E
+  - 4way
+  - straight/E
+  - 3way_left/E
+  - curve_left/N
+  - floor
+  - floor
+  - floor
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - straight/N
+  - floor
+  - straight/N
+  - floor
+  - floor
+  - curve_right/W
+  - 3way_left/W
+  - straight/E
+  - curve_left/N
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - straight/N
+  - floor
+  - straight/N
+  - floor
+  - floor
+  - floor
+  - straight/N
+  - floor
+  - straight/N
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - curve_right/W
+  - straight/E
+  - 3way_left/N
+  - floor
+  - floor
+  - floor
+  - 3way_left/S
+  - straight/E
+  - 3way_left/N
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - straight/N
+  - floor
+  - floor
+  - floor
+  - straight/N
+  - floor
+  - straight/N
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - curve_right/W
+  - curve_left/N
+  - floor
+  - curve_right/N
+  - 3way_left/E
+  - straight/E
+  - curve_left/E
+- - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - floor
+  - curve_right/W
+  - straight/E
+  - curve_left/E
   - floor
   - floor
   - floor
