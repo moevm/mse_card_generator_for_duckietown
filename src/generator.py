@@ -16,7 +16,7 @@ class GeneratorRandom(object):
 
 
 class Generator(object):
-    DEBUG = True
+    DEBUG = False
 
     @dataclass
     class GeneratorState:
