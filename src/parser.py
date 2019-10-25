@@ -7,7 +7,14 @@ class Parser(object):
 
     @staticmethod
     def parse():
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--size', default='7x7', type=str, action='store', help='map size')
+
+        width, height = list(map(int, (parser.parse_args().size).split('x')))
+
+        print(width, height)
+
         return {
-            'width': 15,
-            'height': 15
+            'width': width,
+            'height': height
         }

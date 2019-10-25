@@ -80,7 +80,7 @@ class Generator(object):
 
                     print()
 
-                print(''.join(['\033[F'] * (self._height + 2)))
+                #print(''.join(['\033[F'] * (self._height + 2)))
 
             if is_new_cycle:
                 num += 1
@@ -228,7 +228,12 @@ class Generator(object):
 
             if len(correct_cells) == 0:
                 self.__cannot_be_used_as_node.append(_current_cell)
-                _current_cell = random.choice(list(filter(lambda c: c not in self.__cannot_be_used_as_node, neibs['roads'])))
+                lst = list(filter(lambda c: c not in self.__cannot_be_used_as_node, neibs['roads']))
+
+                if len(lst) == 0:
+                    return [None, None]
+
+                _current_cell = random.choice(lst)
 
                 continue
 
