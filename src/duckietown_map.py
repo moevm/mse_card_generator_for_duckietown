@@ -41,7 +41,6 @@ class DuckietownMap(object):
 
         for i in range(state.height):
             for j in range(state.width):
-                print(state.map[i][j], j, i)
                 self._map[i][j] = self.CELLS[state.map[i][j]]
 
         self._create_objects()
