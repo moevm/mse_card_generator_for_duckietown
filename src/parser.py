@@ -12,8 +12,6 @@ class Parser(object):
 
         width, height = list(map(int, (parser.parse_args().size).split('x')))
 
-        print(width, height)
-
         return {
             'width': width,
             'height': height
