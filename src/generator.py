@@ -56,7 +56,9 @@ class Generator(object):
 
             for i in range(self._height):
                 for j in range(self._width):
-                    if self._cells[i][j].accepted:
+                    if self._cells[i][j].scanned:
+                        print('\033[93m' + '#' + '\x1b[0m', end=' ')
+                    elif self._cells[i][j].accepted:
                         print('\033[92m' + '#' + '\x1b[0m', end=' ')
                     elif self._cells[i][j].under_construction:
                         print('\033[91m' + '#' + '\x1b[0m', end=' ')
@@ -74,105 +76,43 @@ class Generator(object):
         _cell.under_construction = False
         _cell.accepted = True
 
-    def _scanning(self, _node, condition):
-        cross_cell, another_cross_cell = self._get_neighbours(_node, condition)['requested']
-        current_cell = cross_cell
-        current_cell.scanned = True
-        edge_cells = [current_cell]
-        correct_flag = True
-
-        while True:
-            nbs = self._get_neighbours(current_cell, lambda c: c.accepted and not c.scanned)['requested']
-
-            if len(nbs) > 0:
-                current_cell = nbs[0]
-                current_cell.scanned = True
-                edge_cells.append(current_cell)
-            else:
-                break
-
-        current_cell = self._get_neighbours(cross_cell, lambda c: not c.accepted)['requested'][0]
-        dx = current_cell.position.x - cross_cell.position.x
-        dy = current_cell.position.y - cross_cell.position.y
-        flag = True
-
-        print('start position = {}'.format(current_cell.position))
-        print('dx = {}\ndy = {}'.format(dx, dy))
-
-        while self._on_board(current_cell.position):
-            cell = self._cells[current_cell.position.y][current_cell.position.x]
-
-            if (cell.scanned or cell.checked) and not flag:
-                flag = True
-            elif (not cell.scanned or not cell.checked) and cell.accepted:
-                flag = False
-
-            current_cell.position.x += dx
-            current_cell.position.y += dy
-
-        print('state = {}'.format(flag))
-
-        if not flag:
-            return [True, edge_cells]
-        else:
-            for cell in edge_cells:
-                cell.scanned = False
-
-            return [False, [another_cross_cell]]
-
     def _create(self):
         accepted_cells = self._create_first_cycle()
 
         for i in range(10):
-            cells_for_remove = self._prunning(self._add_layer(accepted_cells))
-
-            for cell in cells_for_remove:
-                cell.accepted = False
-                cell.scanned = False
+            if not self._add_layer(accepted_cells):
+                break
 
             self.debug()
 
-    def _prunning(self, new_layer):
-        begin = new_layer[0]
-        end = new_layer[-1]
-
-        begin.scanned = True
-        end.scanned = True
-        checked_cells = [begin, end]
-        output = []
-
-        node = begin
-
-        result = self._scanning(node, lambda c: c.accepted and c not in [new_layer[1], new_layer[-2]])
-
-        if result[0]:
-            begin.scanned = False
-            end.scanned = False
-
-            return result[1]
-        else:
-            walker = result[1][0]
-            output.append(walker)
-
-            while True:
-                nbs = self._get_neighbours(walker, lambda c: c.accepted and not c.scanned)['requested']
-
-                if len(nbs) > 0:
-                    walker = nbs[0]
-                    walker.scanned = True
-                    output.append(walker)
-                else:
-                    begin.scanned = False
-                    end.scanned = False
-
-                    return output
-
     def _add_layer(self, accepted_cells):
+        node = None
+
+        def node_neighbours_assert(_node: Generator.Cell, _cell: Generator.Cell) -> bool:
+            neighbours = self._get_neighbours(_cell, lambda c: c.accepted)['requested']
+
+            for neighbour in neighbours:
+                if _node in self._get_neighbours(neighbour, lambda c: c.accepted)['requested']:
+                    return False
+
+            return True
+
+        transition_condition = lambda c: not c.accepted and \
+                                         not c.under_construction and \
+                                         len(self._get_neighbours(c, lambda _c: _c.accepted)['requested']) <= 1 and \
+                                         len(self._get_neighbours(c, lambda _c: _c.under_construction)[
+                                                 'requested']) <= 1 and \
+                                         node_neighbours_assert(node, c) and \
+                                         node not in self._get_neighbours(c, lambda _c: _c.accepted)['requested']
+        algorithm_end_condition = lambda c: len(self._get_neighbours(c, lambda _c: _c.accepted)['requested']) == 1 and \
+                                            len(self._get_neighbours(c, lambda _c: _c.under_construction)[
+                                                    'requested']) == 1
+
         while True:
             node = self._find_correct_cycle_node(accepted_cells)
 
             if not node:
-                return True
+                return False
 
             ways = self._find_node_possible_way(node, lambda c: not c.accepted)
 
@@ -181,77 +121,72 @@ class Generator(object):
                 continue
 
             for current_cell in ways:
-                path = self._backtracking_path_finder(node, current_cell)
+                path = self._path_finder(current_cell, end=None, transition_condition=transition_condition,
+                                         algorithm_end_condition=algorithm_end_condition)
 
                 if path:
-                    accepted_cells.extend(path[1:-1])
+                    for cell in path:
+                        self._accept(cell)
+                        cell.can_be_used_as_node = True
+
+                    accepted_cells.extend(path)
+
                     return path
                 elif current_cell == ways[-1]:
                     node.can_be_used_as_node = False
 
-    def _backtracking_path_finder(self, node, begin, end=None, conditions=[lambda: True]):
+    def _path_finder(self, begin, end=None, transition_condition=lambda c: True,
+                     algorithm_end_condition=lambda c: True):
+        if end:
+            algorithm_end_condition = lambda c: c == end
+
+        print(begin)
+
+        queue = deque()
+        queue.append(begin)
         current_cell = begin
-        under_construction_cells = [node, begin]
-        checked_cells = []
-
-        node.under_construction = True
         current_cell.under_construction = True
+        current_cell.checked = True
 
-        while True:
+        while not algorithm_end_condition(current_cell) and queue.__len__() > 0:
             self.debug()
 
-            neighbours = self._get_neighbours(current_cell, lambda c: not c.checked and not c.accepted and not c.under_construction and len(self._get_neighbours(c, lambda _: _.under_construction)['requested']) == 1)
-            actual_cells = []
+            neighbours = self._get_neighbours(current_cell, lambda c: transition_condition(c) and not c.checked)
 
-            for neighbour in neighbours['requested']:
-                nbs = self._get_neighbours(neighbour, lambda c: c.accepted)
-                nbs_req = nbs['requested']
+            if len(neighbours['requested']) == 0:
+                for neighbour in neighbours['all']:
+                    if neighbour.under_construction:
+                        neighbour.checked = False
 
-                print(len(nbs_req))
-
-                if len(nbs_req) == 1:
-                    if nbs_req[0] in self._get_neighbours(under_construction_cells[-2], lambda c: True)['requested'] or nbs_req[0] in self._get_neighbours(node, lambda c: True)['requested']:
-                        continue
-
-                    neighbour.under_construction = True
-                    under_construction_cells.append(neighbour)
-                    under_construction_cells.append(nbs_req[0])
-
-                    for cell in under_construction_cells:
-                        self._accept(cell)
-                        cell.can_be_used_as_node = True
-
-                    for cell in checked_cells:
-                        cell.checked = False
-
-                    return under_construction_cells
-                elif len(nbs_req) == 0:
-                    if len(list(filter(lambda c: c.under_construction, nbs['all']))) != 1:
-                        continue
-
-                    actual_cells.append(neighbour)
-
-            if len(actual_cells) == 0:
-                current_cell.checked = True
-                checked_cells.append(current_cell)
                 current_cell.under_construction = False
-                under_construction_cells.pop()
 
-                if len(under_construction_cells) == 1:
-                    last = under_construction_cells[-1]
-                    last.under_construction = False
-                    last.can_be_used_as_node = True
-
-                    for cell in checked_cells:
-                        cell.checked = False
-
-                    return None
-                else:
-                    current_cell = under_construction_cells[-1]
+                queue.remove(current_cell)
             else:
-                current_cell = random.choice(actual_cells)
-                current_cell.under_construction = True
-                under_construction_cells.append(current_cell)
+                requested = neighbours['requested']
+                flag = False
+
+                for cell in requested:
+                    if algorithm_end_condition(cell):
+                        current_cell = cell
+                        flag = True
+
+                        break
+
+                if not flag:
+                    current_cell = random.choice(requested)
+                    current_cell.checked = True
+                    current_cell.under_construction = True
+
+                queue.append(current_cell)
+
+            if queue.__len__() > 0:
+                queue[-1].checked = True
+                current_cell = queue[-1]
+
+        for i in range(queue.__len__()):
+            queue[i].checked = False
+
+        return list(queue)
 
     def _find_correct_cycle_node(self, _accepted_cells):
         random.shuffle(_accepted_cells)
@@ -278,25 +213,15 @@ class Generator(object):
 
                 dx = _cell.position.x - _node.position.x
                 dy = _cell.position.y - _node.position.y
-                wall_road_flag = False
+                wall_road_flag = True
                 current_position = Position(_node.position.x, _node.position.y)
-                count = 0
+                count = 1
+                road_flag = False
 
                 if len(self._get_neighbours(_cell, lambda _c: _c.accepted)['requested']) != 1 and not prunning:
                     continue
 
-                while self._on_board(current_position):
-                    if self._cells[current_position.y][current_position.x].accepted and wall_road_flag:
-                        count += 1
-                        wall_road_flag = False
-                    elif not self._cells[current_position.y][current_position.x].accepted:
-                        wall_road_flag = True
-
-                    current_position.x += dx
-                    current_position.y += dy
-
-                if count % 2 == 0:
-                    possible_ways.append(_cell)
+                possible_ways.append(_cell)
 
             return possible_ways
 
@@ -330,7 +255,7 @@ class Generator(object):
 
         self._state = self.GeneratorState(self._height, self._width, map)
 
-    def _create_first_cycle(self):
+    def _create_first_cycle(self, max_length=10):
         center = Position(self._width // 2, self._height // 2)
 
         cells = [
