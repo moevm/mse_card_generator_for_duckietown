@@ -31,12 +31,12 @@ class Generator(object):
             self.under_construction = False
             self.can_be_used_as_node = False
             self.checked = False
-            self.scanned = False
-            self.num = -1
 
     def __init__(self, settings=None):
         self._width = settings['width']
         self._height = settings['height']
+        self._crossroads_num = settings['crossroads_number']
+        self._crossroads_count = 0
         self._cells = [[self.Cell(Position(x, y)) for x in range(self._width)] for y in range(self._height)]
         self.__cannot_be_used_as_node = []
 
@@ -50,15 +50,19 @@ class Generator(object):
     def get_state(self):
         return self._state
 
+    def correct_cycle_node_condition(self, _cell):
+        if self._crossroads_num - self._crossroads_count == 1:
+            return len(self._get_neighbours(_cell, lambda c: c.accepted)['requested']) == 3
+        else:
+            return True
+
     def debug(self):
         if self.DEBUG:
             print()
 
             for i in range(self._height):
                 for j in range(self._width):
-                    if self._cells[i][j].scanned:
-                        print('\033[93m' + '#' + '\x1b[0m', end=' ')
-                    elif self._cells[i][j].accepted:
+                    if self._cells[i][j].accepted:
                         print('\033[92m' + '#' + '\x1b[0m', end=' ')
                     elif self._cells[i][j].under_construction:
                         print('\033[91m' + '#' + '\x1b[0m', end=' ')
@@ -79,11 +83,16 @@ class Generator(object):
     def _create(self):
         accepted_cells = self._create_first_cycle()
 
-        for i in range(10):
+        while self._crossroads_count < self._crossroads_num:
             if not self._add_layer(accepted_cells):
                 break
 
             self.debug()
+
+    def _crossroads_block(self, *_cells):
+        for _cell in _cells:
+            for neighbour in self._get_neighbours(_cell, lambda c: c.accepted)['requested']:
+                neighbour.can_be_used_as_node = False
 
     def _add_layer(self, accepted_cells):
         node = None
@@ -92,8 +101,14 @@ class Generator(object):
             neighbours = self._get_neighbours(_cell, lambda c: c.accepted)['requested']
 
             for neighbour in neighbours:
-                if _node in self._get_neighbours(neighbour, lambda c: c.accepted)['requested']:
+                nbs = self._get_neighbours(neighbour, lambda c: c.accepted)['requested']
+
+                if _node in nbs:
                     return False
+
+                for nb in nbs:
+                    if len(self._get_neighbours(nb, lambda c: c.accepted)['requested']) >= 3:
+                        return False
 
             return True
 
@@ -109,12 +124,12 @@ class Generator(object):
                                                     'requested']) == 1
 
         while True:
-            node = self._find_correct_cycle_node(accepted_cells)
+            node = self._find_correct_cycle_node(accepted_cells, self.correct_cycle_node_condition)
 
             if not node:
                 return False
 
-            ways = self._find_node_possible_way(node, lambda c: not c.accepted)
+            ways = self._find_node_possible_way(node)
 
             if not ways:
                 node.can_be_used_as_node = False
@@ -128,6 +143,17 @@ class Generator(object):
                     for cell in path:
                         self._accept(cell)
                         cell.can_be_used_as_node = True
+
+                    begin = node
+                    end = self._get_neighbours(path[-1], lambda c: c.accepted)['requested'][0]
+
+                    self._crossroads_count += 1 if len(
+                        self._get_neighbours(end, lambda c: c.accepted)['requested']) == 4 else 2
+
+                    self._crossroads_block(begin, end)
+
+                    for cell in self._get_neighbours(end, lambda c: c.accepted)['requested']:
+                        cell.can_be_used_as_node = False
 
                     accepted_cells.extend(path)
 
@@ -188,37 +214,25 @@ class Generator(object):
 
         return list(queue)
 
-    def _find_correct_cycle_node(self, _accepted_cells):
+    def _find_correct_cycle_node(self, _accepted_cells, _condition):
         random.shuffle(_accepted_cells)
 
         for _cell in _accepted_cells:
-            if _cell.can_be_used_as_node:
+            if _cell.can_be_used_as_node and _condition(_cell):
                 return _cell
 
-    def _find_node_possible_way(self, _node, condition, prunning=False):
-        node_neighbours = self._get_neighbours(_node, condition)
+    def _find_node_possible_way(self, _node):
+        node_neighbours = self._get_neighbours(_node, lambda c: not c.accepted)
         requested = node_neighbours['requested']
 
         print('len = {}'.format(len(requested)))
         print('node position = {}'.format(_node.position))
 
-        if len(requested) == 2:
-            if (requested[0].position.x == requested[1].position.x or requested[0].position.y == requested[1].position.y) and not prunning:
-                return None
-
+        if len(requested) > 0:
             possible_ways = []
 
             for _cell in node_neighbours['requested']:
-                print(_cell.position)
-
-                dx = _cell.position.x - _node.position.x
-                dy = _cell.position.y - _node.position.y
-                wall_road_flag = True
-                current_position = Position(_node.position.x, _node.position.y)
-                count = 1
-                road_flag = False
-
-                if len(self._get_neighbours(_cell, lambda _c: _c.accepted)['requested']) != 1 and not prunning:
+                if len(self._get_neighbours(_cell, lambda _c: _c.accepted)['requested']) != 1:
                     continue
 
                 possible_ways.append(_cell)
