@@ -18,7 +18,7 @@ esac
 done
 
 if [[ -z ${MAP_SIZE} ]]; then
-    MAP_SIZE="7x7"
+    MAP_SIZE="9x9"
 fi
 
 
