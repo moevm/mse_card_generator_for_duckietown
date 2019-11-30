@@ -23,4 +23,4 @@ fi
 
 
 python3.7 main.py --size $MAP_SIZE
-python3.7 ${DUCKIE_TOWN_PATH}/manual_control.py --env-name Duckietown-udem1-v0manual --map-name ./maps/new_map.yaml
+python3.7 ${DUCKIE_TOWN_PATH}/manual_control.py --env-name Duckietown-small_loop-v0 --seed 2 --map-name ./maps/new_map.yaml
