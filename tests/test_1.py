@@ -23,14 +23,23 @@ with open('test_suit.json', 'r', encoding='utf-8') as f:
 
 generator = Generator({
     'width':5,
-    'height':5
+    'height':5,
+    'length': 10,
+    'crossroads_data': {
+        'triple': 1,
+        'quad': 1
+    }
 })
 
 generator_large = Generator({
     'width':9,
-    'height':9
+    'height':9,
+    'length': 10,
+    'crossroads_data': {
+        'triple': 1,
+        'quad': 1
+    }
 })
-
 
 
 @pytest.mark.parametrize('param', data['params'])
@@ -47,6 +56,7 @@ def test_get_neighbours_0(param):
 
     assert len(neighbours['roads']) == answer
 
+
 @pytest.mark.parametrize('param', data['maps'])
 def test__generate_state_1(param):
     inp1, answer = param
@@ -62,6 +72,7 @@ def test__generate_state_1(param):
     print(generator.get_state().map)
 
     assert generator.get_state().map == answer
+
 
 @pytest.mark.parametrize('param', data['maps_large'])
 def test__generate_state_2(param):
