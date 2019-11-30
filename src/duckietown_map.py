@@ -42,8 +42,17 @@ class DuckietownMap(object):
         for i in range(state.height):
             for j in range(state.width):
                 self._map[i][j] = self.CELLS[state.map[i][j]]
+                if state.map[i][j] == 14:
+                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 0.25, i],'rotate': 45,'static': True})
+                if state.map[i][j] == 7:
+                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j, i + 0.25],'rotate': 45,'static': True})
+                if state.map[i][j] == 11:
+                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 0.25, i + 1],'rotate': 135,'static': True})
+                if state.map[i][j] == 13:
+                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 1, i + 0.25],'rotate': 315,'static': True})
+                if state.map[i][j] == 15:
+                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 0.25, i + 0.25],'rotate': 45,'static': True})
 
-        self._create_objects()
 
         self._data = {
             'tiles': self._map,
@@ -61,7 +70,7 @@ class DuckietownMap(object):
 
             self._objects.append({
                 'height': 0.06,
-                'kind': random.choice(['duckie', 'sign_blank']),
+                'kind': random.choice(['sign_blank']),
                 'pos': duckie_pos,
                 'rotate': 160 + math.degrees(math.atan2(vector[1], vector[0])),
                 'static': True
