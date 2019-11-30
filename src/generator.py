@@ -38,6 +38,7 @@ class Generator(object):
         self._crossroads_data = settings['crossroads_data']
         self._current_road_length = 0
         self._max_length = 12
+
         self._cells = [[self.Cell(Position(x, y)) for x in range(self._width)] for y in range(self._height)]
         self.__cannot_be_used_as_node = []
 
