@@ -375,3 +375,7 @@ class Generator(object):
                     _cells['roads'].append(_cell)
 
         return _cells
+
+    @property
+    def cells(self):
+        return self._cells
