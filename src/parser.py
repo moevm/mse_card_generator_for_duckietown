@@ -1,9 +1,5 @@
 import argparse
-<<<<<<< HEAD
-
-=======
 import random
->>>>>>> 4aa3dc94cbf54dd1170de3e4e3a0390d2aad63fd
 
 class Parser(object):
     def __init__(self):
@@ -13,14 +9,6 @@ class Parser(object):
     def parse():
         parser = argparse.ArgumentParser()
         parser.add_argument('--size', default='7x7', type=str, action='store', help='map size')
-<<<<<<< HEAD
-
-        width, height = list(map(int, (parser.parse_args().size).split('x')))
-
-        return {
-            'width': width,
-            'height': height
-=======
         parser.add_argument('--crossroad_count', default='3', type=str, action='store', help='crossroads count and type\nFor example:\n4\n4T\n4Q\n4T2Q')
 
         width, height = list(map(int, (parser.parse_args().size).split('x')))
@@ -36,5 +24,4 @@ class Parser(object):
                 'triple': triple,
                 'quad': quad
             }
->>>>>>> 4aa3dc94cbf54dd1170de3e4e3a0390d2aad63fd
         }
