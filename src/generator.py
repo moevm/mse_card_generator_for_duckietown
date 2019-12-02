@@ -16,7 +16,7 @@ class GeneratorRandom(object):
 
 
 class Generator(object):
-    DEBUG = True
+    DEBUG = False
 
     @dataclass
     class GeneratorState:
@@ -87,9 +87,11 @@ class Generator(object):
 
         while not self._all_crossroads_created():
             if not self._add_layer(accepted_cells):
+                print('aaaa')
                 break
 
             self.debug()
+            print(self._crossroads_data['triple'])
 
     def _crossroads_block(self, *_cells):
         for _cell in _cells:
@@ -192,6 +194,8 @@ class Generator(object):
                 node, ways = self._get_correct_cycle_ways(accepted_cells, self.correct_cycle_node_condition,
                                                           cannot_be_used_as_node, ways_count=1)
 
+                print('node = {}'.format(node))
+
                 if not node:
                     return False
 
@@ -214,6 +218,9 @@ class Generator(object):
                     self._crossroads_data['triple'] -= 2
 
                     return True
+
+                continue
+            break
 
     def _path_finder(self, begin, end=None, transition_condition=lambda c: True,
                      algorithm_end_condition=lambda c: True):
