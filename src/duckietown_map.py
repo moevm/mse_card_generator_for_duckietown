@@ -39,9 +39,40 @@ class DuckietownMap(object):
 
         self._map = [['straight/W'] * state.width for _ in range(state.height)]
 
+        print('aaaaaaaaa')
+
         for i in range(state.height):
             for j in range(state.width):
                 self._map[i][j] = self.CELLS[state.map[i][j]]
+
+                if self._map[i][j] == 'floor':
+                    building_type = random.choice(['duckie',
+                                                   'tree',
+                                                   'house'])
+
+                    if random.randint(0, 3) == 0:
+                        if building_type == 'house':
+                            self._objects.append({
+                                'height': 0.22, 'kind':building_type, 'pos': [j + 0.2925, i + 0.2925], 'rotate': 0
+                            })
+                        elif building_type == 'tree':
+                            for _ in range(random.randint(3, 7)):
+                                self._objects.append({
+                                    'height': 0.22,
+                                    'kind': building_type,
+                                    'pos': [j + random.random() * self.DEFAULT_TILE_SIZE, i + random.random() * self.DEFAULT_TILE_SIZE],
+                                    'rotate': 0
+                                })
+                        elif building_type == 'duckie':
+                            for _ in range(random.randint(1, 4)):
+                                self._objects.append({
+                                    'height': 0.04,
+                                    'kind': building_type,
+                                    'pos': [j + random.random() * self.DEFAULT_TILE_SIZE, i + random.random() * self.DEFAULT_TILE_SIZE],
+                                    'rotate': 0
+                                })
+
+
                 if state.map[i][j] == 14:
                     self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 0.25, i],'rotate': 45,'static': True})
                 if state.map[i][j] == 7:
