@@ -87,17 +87,11 @@ class Generator(object):
 
         while not self._all_crossroads_created():
             if not self._add_layer(accepted_cells):
-<<<<<<< HEAD
-                break
-
-            self.debug()
-=======
                 print('aaaa')
                 break
 
             self.debug()
             print(self._crossroads_data['triple'])
->>>>>>> 814ee8b80b16b16fa9ab9e58d3eb266be8661381
 
     def _crossroads_block(self, *_cells):
         for _cell in _cells:
