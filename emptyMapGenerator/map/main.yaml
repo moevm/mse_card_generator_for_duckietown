@@ -1,0 +1,4 @@
+main:
+  frames: frames.yaml
+  tile_maps: tiles_maps.yaml
+  tiles: tiles.yaml
