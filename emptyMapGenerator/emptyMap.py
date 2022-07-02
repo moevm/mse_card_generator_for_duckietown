@@ -50,8 +50,8 @@ def add_new_obj(dm: Map,
 
 
 if __name__ == '__main__':
-    size = 3
-    M = Map("map_0", "./my_map")
+    size = 6
+    M = Map("map_0", "./map")
 
     frames_layer = MapLayer(M, "frames")
     createFrames()
@@ -66,5 +66,5 @@ if __name__ == '__main__':
     M.layers.__dict__["tiles"] = tiles_layer
     M.layers.__dict__["tile_maps"] = tile_maps_layer
 
-    print(list(M.layers.items()))
+    # print(list(M.layers.items()))
     M.to_disk()
