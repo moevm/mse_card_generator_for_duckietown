@@ -2,7 +2,7 @@
 ## main.py
 DuckietownMap(Generator(Parser.parse())).new().save()
 
-## Создание объекта Parse 
+## Создание объекта Parse  
 ->Конструктор
 
 ## Вызов метода parse() у созданного объекта
