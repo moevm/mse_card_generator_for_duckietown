@@ -1,4 +1,6 @@
-# main.py
+# Генерация карты
+## main.py
+DuckietownMap(Generator(Parser.parse())).new().save()
 
 ## Создание объекта Parse
 ->Конструктор
