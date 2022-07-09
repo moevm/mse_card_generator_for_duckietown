@@ -33,15 +33,15 @@ class DuckietownMap(object):
 
     NEW_CELLS = { ### type, yaw
         0: ['floor', 0],
-        5: ['straight', 90],
-        10: ['straight', 0],
-        3: ['curve', 180],
+        5: ['straight', 0],
+        10: ['straight', 90],
+        3: ['curve', 0],
         6: ['curve', 90],
-        12: ['curve', 0],
+        12: ['curve', 180],
         9: ['curve', 270],
         7: ['3way', 0],
-        11: ['3way', 90],
-        14: ['3way', 270],
+        11: ['3way', 270],
+        14: ['3way', 90],
         13: ['3way', 180],
         15: ['4way', 0]
     }
@@ -160,15 +160,15 @@ class DuckietownMap(object):
 
         add_new_obj(M, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
         frames_layer.write("map_0", 'pose', {'x': 1.0, 'y': 2.0, 'z': 0, 'roll': 0, 'pitch': 0, 'yaw': 0})
-        for height in range(0, state.height):
-            for width in range(0, state.width):
-                old_cell = old_map[height][width]
+        for height in range(0, state.width):
+            for width in range(0, state.height):
+                old_cell = old_map[width][height]
                 new_cell = self.NEW_CELLS[old_cell]
                 # createBlockFrames(M, frames_layer, None,width,height,0,0,0,new_cell[1])
                 # add_new_obj(M, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
                 # frames_layer.write("map_0", 'pose', {'x': width, 'y': height, 'z': 0, 'roll': 0, 'pitch':  0, 'yaw': new_cell[1]})
                 createMapTileBlock(M,frames_layer, width, height, None, width, height, 0, 0, 0, new_cell[1])
-                add_new_obj(M, tiles_layer, "tiles", f'map_0/tile_{height}_{width}', {'i': height, 'j': width, 'type': new_cell[0]})
+                add_new_obj(M, tiles_layer, "tiles", f'map_0/tile_{width}_{height}', {'i': width, 'j': height, 'type': new_cell[0]})
 
         M.layers.__dict__["frames"] = frames_layer
         M.layers.__dict__["tiles"] = tiles_layer
