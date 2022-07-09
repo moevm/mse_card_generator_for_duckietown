@@ -19,16 +19,16 @@ def createTileMaps():
     # add_new_obj(M, tile_maps_layer, "tile_maps", 'map_0', {'tile_size': {'x': 0.585, 'y': 0.585}})
     return {'map_0': {'tile_size': {'x': 0.585, 'y': 0.585}}}
 
-def createBlockFrames(relative_to, x, y, z, roll, pitch, yaw):
+def createBlockFrames(M, frames_layer, relative_to, x, y, z, roll, pitch, yaw):
     add_new_obj(M, frames_layer, "frames", 'map_0', {'relative_to': relative_to, 'pose': None})
     frames_layer.write("map_0", 'pose', {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
 
-def createMapTileBlock(tile_x, tile_y, relative_to, x, y, z, roll, pitch, yaw):
+def createMapTileBlock(M, frames_layer, tile_x, tile_y, relative_to, x, y, z, roll, pitch, yaw):
     add_new_obj(M, frames_layer, "frames", f'map_0/tile_{tile_x}_{tile_y}', {'relative_to': relative_to, 'pose': None})
     frames_layer.write(f'map_0/tile_{tile_x}_{tile_y}', 'pose', {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
 
 def createFrames():
-    createBlockFrames(None, 1.0, 2.0, 0, 0, 0, 0)
+    createBlockFrames(M, frames_layer, None, 1.0, 2.0, 0, 0, 0, 0)
     for tile_y in range(0,size):
         for tile_x in range(0, size):
             createMapTileBlock(tile_x, tile_y, None, tile_x, tile_y, 0, 0, 0, 0)

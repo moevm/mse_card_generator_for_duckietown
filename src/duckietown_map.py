@@ -4,10 +4,17 @@ import random
 import math
 import yaml
 
+from emptyMapGenerator.emptyMap import *
+
+from dt_maps import Map, MapLayer
+from dt_maps.types.tiles import Tile
+from dt_maps.types.frames import Frame
+from dt_maps.types.watchtowers import Watchtower
 
 class DuckietownMap(object):
     DEFAULT_MAP_NAME = './maps/new_map.yaml'
-    DEFAULT_TILE_SIZE = 0.585
+    # DEFAULT_TILE_SIZE = 0.585
+    DEFAULT_TILE_SIZE = 1.0
 
     CELLS = {
         0: 'floor',
@@ -22,6 +29,21 @@ class DuckietownMap(object):
         14: '3way_left/W',
         13: '3way_left/N',
         15: '4way'
+    }
+
+    NEW_CELLS = { ### type, yaw
+        0: ['floor', 0],
+        5: ['straight', 90],
+        10: ['straight', 0],
+        3: ['curve', 180],
+        6: ['curve', 90],
+        12: ['curve', 0],
+        9: ['curve', 270],
+        7: ['3way', 0],
+        11: ['3way', 90],
+        14: ['3way', 270],
+        13: ['3way', 180],
+        15: ['4way', 0]
     }
 
     def __init__(self, generator=None):
@@ -124,6 +146,43 @@ class DuckietownMap(object):
             'static': True
         })
 
+    def save_new_architecture(self):
+        # M = Map("map_0", "../emptyMapGenerator/new_map/")
+        M = Map("map_0", "./")
+
+        frames_layer = MapLayer(M, "frames")
+        tiles_layer = MapLayer(M, "tiles")
+        tile_maps_layer = MapLayer(M, "tile_maps", createTileMaps())
+        # old_map = self._map
+        state = self._generator.get_state()
+        old_map = state.map
+        size = state.width
+
+        add_new_obj(M, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
+        frames_layer.write("map_0", 'pose', {'x': 1.0, 'y': 2.0, 'z': 0, 'roll': 0, 'pitch': 0, 'yaw': 0})
+        for height in range(0, state.height):
+            for width in range(0, state.width):
+                old_cell = old_map[height][width]
+                new_cell = self.NEW_CELLS[old_cell]
+                # createBlockFrames(M, frames_layer, None,width,height,0,0,0,new_cell[1])
+                # add_new_obj(M, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
+                # frames_layer.write("map_0", 'pose', {'x': width, 'y': height, 'z': 0, 'roll': 0, 'pitch':  0, 'yaw': new_cell[1]})
+                createMapTileBlock(M,frames_layer, width, height, None, width, height, 0, 0, 0, new_cell[1])
+                add_new_obj(M, tiles_layer, "tiles", f'map_0/tile_{height}_{width}', {'i': height, 'j': width, 'type': new_cell[0]})
+
+        M.layers.__dict__["frames"] = frames_layer
+        M.layers.__dict__["tiles"] = tiles_layer
+        M.layers.__dict__["tile_maps"] = tile_maps_layer
+        M.to_disk()
+
+
     def save(self, file_name=DEFAULT_MAP_NAME):
+        # print("map =")
+        # print(self._map)
+        # print("data =")
+        # print(self._data)
+        # print("qq")
+        self.save_new_architecture()
         with open(file_name, 'w') as fout:
             fout.write(yaml.dump(self._data))
+
