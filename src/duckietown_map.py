@@ -177,12 +177,8 @@ class DuckietownMap(object):
 
 
     def save(self, file_name=DEFAULT_MAP_NAME):
-        # print("map =")
-        # print(self._map)
-        # print("data =")
-        # print(self._data)
-        # print("qq")
-        self.save_new_architecture()
+
+        self.save_new_architecture()            ### reload to new arch map
         with open(file_name, 'w') as fout:
             fout.write(yaml.dump(self._data))
 
