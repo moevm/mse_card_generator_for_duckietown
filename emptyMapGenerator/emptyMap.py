@@ -43,13 +43,13 @@ def calc_xy_wt(elem: list):
     y = elem[1]
     direction = elem[2]
     if direction == 0:
-        return x - 0.585, y - 0.2925
+        return x + 0.4, y + 0.6
     if direction == 90:
-        return x + 0.2925, y
+        return x + 0.6, y - (1-0.585)
     if direction == 180:
-        return x, y - 0.2925
+        return x + 0.4, y - 0.6
     if direction == 270:
-        return x - 0.8, y - (1 - 0.585)
+        return x - 0.6, y - (1 - 0.585)
 
 def createWatchtowers(M, frames_layer, watchtowers_layer,wt_list:list):
     counter = 0
