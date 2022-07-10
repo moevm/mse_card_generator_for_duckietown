@@ -146,31 +146,48 @@ class DuckietownMap(object):
             'static': True
         })
 
+    def print_map(self, state):
+        old_map = state.map
+        # old_map =tuple(zip(*old_map[::-1])) #rotate to 90 degree
+        print("map=",old_map)
+        for i in range(state.height):
+            for j in range(state.width):
+                if i==1 and j ==3:
+                    print(".", end='')
+                if old_map[i][j] != 0 :
+                    print("#", end=' ')
+                else:
+                    print("0", end=' ')
+            print('\n', end='')
+
+
     def is_near_road(self, state, cells: list):
         old_map = state.map
         near_road_floor = []
         wt_list = []
-        print(state.width, state.height)
+        # print(state.width, state.height)
         for i in range(0, len(cells)):
             cell = cells[i]
-            a = cell[1]
-            b = cell[0]
+            a = cell[0]
+            b = cell[1]
 
-            print(a, b)
+            # print(a, b)
             if old_map[a + 1][b] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([b,a,180]) # сверху
+                wt_list.append([a,b,270]) # сверху
+
             if old_map[a - 1][b] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([b,a,0]) # снизу
+                wt_list.append([a,b,90]) # снизу
+
             if old_map[a][b + 1] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([b,a,90]) # слева
+                wt_list.append([a,b,180]) # слева
+
             if old_map[a][b - 1] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([b,a,270]) # справа
-        print("A")
-        print(near_road_floor)
+                wt_list.append([a,b,0]) # справа
+
         list1 = near_road_floor
         list2 = []
         for item in list1:
@@ -187,16 +204,20 @@ class DuckietownMap(object):
         height = state.height
 
         floor_list = []
-        for i in range(1,width-1):
-            for j in range(1, height-1):
+        for i in range(1, height - 1):
+            for j in range(1,width-1):
                 if old_map[i][j] == 0:
                     floor_list.append([i,j])
 
+        self.print_map(state)
+        print("floor_list", floor_list)
         flor_near_road, watchtowers_list = self.is_near_road(state, floor_list)
 
-        print("floor_list",floor_list)
+
         print("flor_near_road",flor_near_road)
         print("watchtower_list=",watchtowers_list)
+        self.print_map(state)
+        return  watchtowers_list
 
     def save_new_architecture(self):
         # M = Map("map_0", "../emptyMapGenerator/new_map/")
@@ -224,8 +245,9 @@ class DuckietownMap(object):
 
         watchtower_layer = MapLayer(M, "watchtowers")
 
-        #watchtowers_list = []
-        self.get_watchtowers_place(state)
+
+        watchtowers_list = self.get_watchtowers_place(state)
+        createWatchtowers(M, frames_layer, watchtower_layer ,watchtowers_list)
        # print(old_map)
 
         M.layers.__dict__["watchtowers"] = watchtower_layer

@@ -38,6 +38,33 @@ def createTiles(type = 'floor'):
         for j in range(0, size):
             add_new_obj(M, tiles_layer, "tiles", f'map_0/tile_{i}_{j}', {'i': i, 'j': j, 'type': type})
 
+def calc_xy_wt(elem: list):
+    x = elem[0]
+    y = elem[1]
+    direction = elem[2]
+    if direction == 0:
+        return x - 0.585, y - 0.2925
+    if direction == 90:
+        return x + 0.2925, y
+    if direction == 180:
+        return x, y - 0.2925
+    if direction == 270:
+        return x - 0.8, y - (1 - 0.585)
+
+def createWatchtowers(M, frames_layer, watchtowers_layer,wt_list:list):
+    counter = 0
+    for elem in wt_list:
+        x, y = calc_xy_wt(elem)
+        z = 0
+        pitch = 0
+        roll = 0
+        yaw = elem[2]
+
+        counter+=1
+        add_new_obj(M, watchtowers_layer,"watchtowers", f"map_0/watchtower{counter}",{"configuration": "WT18"})
+        add_new_obj(M, frames_layer, "frames", f'map_0/watchtower{counter}', {'relative_to': None, 'pose': None})
+        frames_layer.write(f'map_0/watchtower{counter}', 'pose', {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
+
 def add_new_obj(dm: Map,
                 layer: MapLayer,
                 layer_name: str, obj_name: str, default_conf: dict) -> None:
@@ -59,7 +86,11 @@ if __name__ == '__main__':
     tiles_layer = MapLayer(M, "tiles")
     createTiles()
 
+    watchtowers_layer = MapLayer(M, "watchtowers")
+    createWatchtowers()
+
     tile_maps_layer = MapLayer(M, "tile_maps", createTileMaps())
+
 
     # populate map
     M.layers.__dict__["frames"] = frames_layer
