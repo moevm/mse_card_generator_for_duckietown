@@ -146,6 +146,58 @@ class DuckietownMap(object):
             'static': True
         })
 
+    def is_near_road(self, state, cells: list):
+        old_map = state.map
+        near_road_floor = []
+        wt_list = []
+        print(state.width, state.height)
+        for i in range(0, len(cells)):
+            cell = cells[i]
+            a = cell[1]
+            b = cell[0]
+
+            print(a, b)
+            if old_map[a + 1][b] in (5, 10, 7, 11, 13, 14):
+                near_road_floor.append(cell)
+                wt_list.append([b,a,180]) # сверху
+            if old_map[a - 1][b] in (5, 10, 7, 11, 13, 14):
+                near_road_floor.append(cell)
+                wt_list.append([b,a,0]) # снизу
+            if old_map[a][b + 1] in (5, 10, 7, 11, 13, 14):
+                near_road_floor.append(cell)
+                wt_list.append([b,a,90]) # слева
+            if old_map[a][b - 1] in (5, 10, 7, 11, 13, 14):
+                near_road_floor.append(cell)
+                wt_list.append([b,a,270]) # справа
+        print("A")
+        print(near_road_floor)
+        list1 = near_road_floor
+        list2 = []
+        for item in list1:
+            if item not in list2:
+                list2.append(item)
+
+        near_road_floor = list2
+        return near_road_floor, wt_list
+
+
+    def get_watchtowers_place(self, state):
+        old_map = state.map
+        width = state.width
+        height = state.height
+
+        floor_list = []
+        for i in range(1,width-1):
+            for j in range(1, height-1):
+                if old_map[i][j] == 0:
+                    floor_list.append([i,j])
+
+        flor_near_road, watchtowers_list = self.is_near_road(state, floor_list)
+
+        print("floor_list",floor_list)
+        print("flor_near_road",flor_near_road)
+        print("watchtower_list=",watchtowers_list)
+
     def save_new_architecture(self):
         # M = Map("map_0", "../emptyMapGenerator/new_map/")
         M = Map("map_0", "./")
@@ -170,6 +222,13 @@ class DuckietownMap(object):
                 createMapTileBlock(M,frames_layer, width, height, None, width, height, 0, 0, 0, new_cell[1])
                 add_new_obj(M, tiles_layer, "tiles", f'map_0/tile_{width}_{height}', {'i': width, 'j': height, 'type': new_cell[0]})
 
+        watchtower_layer = MapLayer(M, "watchtowers")
+
+        #watchtowers_list = []
+        self.get_watchtowers_place(state)
+       # print(old_map)
+
+        M.layers.__dict__["watchtowers"] = watchtower_layer
         M.layers.__dict__["frames"] = frames_layer
         M.layers.__dict__["tiles"] = tiles_layer
         M.layers.__dict__["tile_maps"] = tile_maps_layer
