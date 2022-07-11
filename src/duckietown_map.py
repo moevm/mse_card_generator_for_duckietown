@@ -174,19 +174,19 @@ class DuckietownMap(object):
             # print(a, b)
             if old_map[a + 1][b] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([a,b,270]) # сверху
+                wt_list.append([a,b,90]) # сверху
 
             if old_map[a - 1][b] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([a,b,90]) # снизу
+                wt_list.append([a,b,270]) # снизу
 
             if old_map[a][b + 1] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([a,b,180]) # слева
+                wt_list.append([a,b,0]) # слева
 
             if old_map[a][b - 1] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([a,b,0]) # справа
+                wt_list.append([a,b,180]) # справа
 
         list1 = near_road_floor
         list2 = []
