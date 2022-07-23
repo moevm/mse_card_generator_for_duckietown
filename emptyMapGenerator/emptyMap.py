@@ -12,7 +12,7 @@ REGISTER = {
 }
 
 class emptyMap:
-    def __init__(self, width, height, map_name="map_0", storage_location="./map"):
+    def __init__(self, width, height, map_name="map_0", storage_location="./"):
         self.width = width
         self.height = height
         self.map_name = map_name

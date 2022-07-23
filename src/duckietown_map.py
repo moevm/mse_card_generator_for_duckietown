@@ -4,7 +4,7 @@ import random
 import math
 import yaml
 
-from emptyMapGenerator.emptyMap import *
+from emptyMapGenerator.emptyMap import emptyMap, add_new_obj
 
 from dt_maps import Map, MapLayer
 from dt_maps.types.tiles import Tile
@@ -13,8 +13,8 @@ from dt_maps.types.watchtowers import Watchtower
 
 class DuckietownMap(object):
     DEFAULT_MAP_NAME = './maps/new_map.yaml'
-    # DEFAULT_TILE_SIZE = 0.585
-    DEFAULT_TILE_SIZE = 1.0
+    DEFAULT_TILE_SIZE = 0.585
+    # DEFAULT_TILE_SIZE = 1.0
 
     CELLS = {
         0: 'floor',
@@ -60,8 +60,6 @@ class DuckietownMap(object):
         state = self._generator.get_state()
 
         self._map = [['straight/W'] * state.width for _ in range(state.height)]
-
-        print('aaaaaaaaa')
 
         for i in range(state.height):
             for j in range(state.width):
@@ -209,52 +207,45 @@ class DuckietownMap(object):
                 if old_map[i][j] == 0:
                     floor_list.append([i,j])
 
-        self.print_map(state)
-        print("floor_list", floor_list)
+        # self.print_map(state)
+        # print("floor_list", floor_list)
         flor_near_road, watchtowers_list = self.is_near_road(state, floor_list)
 
-
-        print("flor_near_road",flor_near_road)
-        print("watchtower_list=",watchtowers_list)
+        # print("flor_near_road",flor_near_road)
+        # print("watchtower_list=",watchtowers_list)
         self.print_map(state)
         return  watchtowers_list
 
     def save_new_architecture(self):
-        # M = Map("map_0", "../emptyMapGenerator/new_map/")
-        M = Map("map_0", "./")
 
-        frames_layer = MapLayer(M, "frames")
-        tiles_layer = MapLayer(M, "tiles")
-        tile_maps_layer = MapLayer(M, "tile_maps", createTileMaps())
-        # old_map = self._map
         state = self._generator.get_state()
         old_map = state.map
-        size = state.width
 
-        add_new_obj(M, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
+        eMap = emptyMap(state.width, state.height)
+
+        frames_layer = MapLayer(eMap.map, "frames")
+        tiles_layer = MapLayer(eMap.map, "tiles")
+        tile_maps_layer = MapLayer(eMap.map, "tile_maps", eMap.createTileMaps())
+
+        add_new_obj(eMap.map, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
         frames_layer.write("map_0", 'pose', {'x': 1.0, 'y': 2.0, 'z': 0, 'roll': 0, 'pitch': 0, 'yaw': 0})
         for height in range(0, state.width):
             for width in range(0, state.height):
                 old_cell = old_map[width][height]
                 new_cell = self.NEW_CELLS[old_cell]
-                # createBlockFrames(M, frames_layer, None,width,height,0,0,0,new_cell[1])
-                # add_new_obj(M, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
-                # frames_layer.write("map_0", 'pose', {'x': width, 'y': height, 'z': 0, 'roll': 0, 'pitch':  0, 'yaw': new_cell[1]})
-                createMapTileBlock(M,frames_layer, width, height, None, width, height, 0, 0, 0, new_cell[1])
-                add_new_obj(M, tiles_layer, "tiles", f'map_0/tile_{width}_{height}', {'i': width, 'j': height, 'type': new_cell[0]})
+                eMap.createMapTileBlock(eMap.map,frames_layer,width,height,None,width,height,0,0,0,new_cell[1])
+                add_new_obj(eMap.map, tiles_layer, "tiles", f'map_0/tile_{width}_{height}', {'i': width, 'j': height, 'type': new_cell[0]})
 
-        watchtower_layer = MapLayer(M, "watchtowers")
-
-
+        watchtower_layer = MapLayer(eMap.map, "watchtowers")
         watchtowers_list = self.get_watchtowers_place(state)
-        createWatchtowers(M, frames_layer, watchtower_layer ,watchtowers_list)
+        eMap.createWatchtowers(eMap.map, frames_layer, watchtower_layer, watchtowers_list)
        # print(old_map)
 
-        M.layers.__dict__["watchtowers"] = watchtower_layer
-        M.layers.__dict__["frames"] = frames_layer
-        M.layers.__dict__["tiles"] = tiles_layer
-        M.layers.__dict__["tile_maps"] = tile_maps_layer
-        M.to_disk()
+        eMap.map.layers.__dict__["watchtowers"] = watchtower_layer
+        eMap.map.layers.__dict__["frames"] = frames_layer
+        eMap.map.layers.__dict__["tiles"] = tiles_layer
+        eMap.map.layers.__dict__["tile_maps"] = tile_maps_layer
+        eMap.map.to_disk()
 
 
     def save(self, file_name=DEFAULT_MAP_NAME):
