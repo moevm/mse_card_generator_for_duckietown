@@ -44,6 +44,41 @@ class emptyMap:
         # add_new_obj(M, tile_maps_layer, "tile_maps", 'map_0', {'tile_size': {'x': 0.585, 'y': 0.585}})
         return {'map_0': {'tile_size': {'x': 0.585, 'y': 0.585}}}
 
+    '''
+    Main creation doesnt work
+    '''
+    # def createMain():
+    #     dict_file = {'main': {'frames': 'frames.yaml', 'tiles': 'tiles.yaml', 'tile_maps': 'tiles_maps.yaml'}}
+    #     return dict_file
+
+    def calc_xy_wt(self, elem: list):
+        x = elem[0]
+        y = elem[1]
+        direction = elem[2]
+        if direction == 0:
+            return x + 0.4, y + 0.6
+        if direction == 90:
+            return x + 0.6, y - (1 - 0.585)
+        if direction == 180:
+            return x + 0.4, y - 0.6
+        if direction == 270:
+            return x - 0.6, y - (1 - 0.585)
+
+    def createWatchtowers(self, M, frames_layer, watchtowers_layer, wt_list: list):
+        counter = 0
+        for elem in wt_list:
+            x, y = self.calc_xy_wt(elem)
+            z = 0
+            pitch = 0
+            roll = 0
+            yaw = elem[2]
+
+            counter += 1
+            add_new_obj(M, watchtowers_layer, "watchtowers", f"map_0/watchtower{counter}", {"configuration": "WT18"})
+            add_new_obj(M, frames_layer, "frames", f'map_0/watchtower{counter}', {'relative_to': None, 'pose': None})
+            frames_layer.write(f'map_0/watchtower{counter}', 'pose',
+                               {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
+
     def createEmptyMap(self):
         frames_layer = MapLayer(self.map, "frames")
         self.createFrames(frames_layer)
@@ -62,9 +97,9 @@ class emptyMap:
         self.map.to_disk()
 
 
-def createMain():
-    dict_file = {'main': {'frames': 'frames.yaml', 'tiles': 'tiles.yaml', 'tile_maps': 'tiles_maps.yaml'}}
-    return dict_file
+# def createMain():
+#     dict_file = {'main': {'frames': 'frames.yaml', 'tiles': 'tiles.yaml', 'tile_maps': 'tiles_maps.yaml'}}
+#     return dict_file
 
 # def createTileMaps():
 #     # add_new_obj(M, tile_maps_layer, "tile_maps", 'map_0', {'tile_size': {'x': 0.585, 'y': 0.585}})
@@ -89,32 +124,32 @@ def createMain():
 #         for j in range(0, size):
 #             add_new_obj(M, tiles_layer, "tiles", f'map_0/tile_{i}_{j}', {'i': i, 'j': j, 'type': type})
 
-def calc_xy_wt(elem: list):
-    x = elem[0]
-    y = elem[1]
-    direction = elem[2]
-    if direction == 0:
-        return x + 0.4, y + 0.6
-    if direction == 90:
-        return x + 0.6, y - (1-0.585)
-    if direction == 180:
-        return x + 0.4, y - 0.6
-    if direction == 270:
-        return x - 0.6, y - (1 - 0.585)
+# def calc_xy_wt(elem: list):
+#     x = elem[0]
+#     y = elem[1]
+#     direction = elem[2]
+#     if direction == 0:
+#         return x + 0.4, y + 0.6
+#     if direction == 90:
+#         return x + 0.6, y - (1-0.585)
+#     if direction == 180:
+#         return x + 0.4, y - 0.6
+#     if direction == 270:
+#         return x - 0.6, y - (1 - 0.585)
 
-def createWatchtowers(M, frames_layer, watchtowers_layer,wt_list:list):
-    counter = 0
-    for elem in wt_list:
-        x, y = calc_xy_wt(elem)
-        z = 0
-        pitch = 0
-        roll = 0
-        yaw = elem[2]
-
-        counter+=1
-        add_new_obj(M, watchtowers_layer,"watchtowers", f"map_0/watchtower{counter}",{"configuration": "WT18"})
-        add_new_obj(M, frames_layer, "frames", f'map_0/watchtower{counter}', {'relative_to': None, 'pose': None})
-        frames_layer.write(f'map_0/watchtower{counter}', 'pose', {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
+# def createWatchtowers(M, frames_layer, watchtowers_layer,wt_list:list):
+#     counter = 0
+#     for elem in wt_list:
+#         x, y = calc_xy_wt(elem)
+#         z = 0
+#         pitch = 0
+#         roll = 0
+#         yaw = elem[2]
+#
+#         counter+=1
+#         add_new_obj(M, watchtowers_layer,"watchtowers", f"map_0/watchtower{counter}",{"configuration": "WT18"})
+#         add_new_obj(M, frames_layer, "frames", f'map_0/watchtower{counter}', {'relative_to': None, 'pose': None})
+#         frames_layer.write(f'map_0/watchtower{counter}', 'pose', {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
 
 def add_new_obj(dm: Map,
                 layer: MapLayer,
