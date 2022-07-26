@@ -45,7 +45,7 @@ class DuckietownMap(object):
         self._generator.create()
         state = self._generator.get_state()
 
-        self._map = [['straight/W'] * state.width for _ in range(state.height)]
+        self._map = [[''] * state.width for _ in range(state.height)]
 
         for i in range(state.height):
             for j in range(state.width):
