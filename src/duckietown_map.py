@@ -4,12 +4,13 @@ import random
 import math
 import yaml
 
-from emptyMapGenerator.emptyMap import emptyMap, add_new_obj
+from emptyMapGenerator.emptyMap import emptyMap, Pose, add_new_obj
 
 from dt_maps import Map, MapLayer
 from dt_maps.types.tiles import Tile
 from dt_maps.types.frames import Frame
 from dt_maps.types.watchtowers import Watchtower
+
 
 class DuckietownMap(object):
     DEFAULT_MAP_NAME = './maps/new_map.yaml'
@@ -135,8 +136,6 @@ class DuckietownMap(object):
         print("map=",old_map)
         for i in range(state.height):
             for j in range(state.width):
-                if i==1 and j ==3:
-                    print(".", end='')
                 if old_map[i][j] != 0 :
                     print("#", end=' ')
                 else:
@@ -212,12 +211,14 @@ class DuckietownMap(object):
         tile_maps_layer = MapLayer(eMap.map, "tile_maps", eMap.createTileMaps())
 
         add_new_obj(eMap.map, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
-        frames_layer.write("map_0", 'pose', {'x': 1.0, 'y': 2.0, 'z': 0, 'roll': 0, 'pitch': 0, 'yaw': 0})
+        frames_layer['map_0']['pose'] = Pose(1.0, 2.0).get_pose()
+
         for height in range(0, state.width):
             for width in range(0, state.height):
                 old_cell = old_map[width][height]
                 new_cell = self.NEW_CELLS[old_cell]
-                eMap.createMapTileBlock(eMap.map,frames_layer,width,height,None,width,height,0,0,0,new_cell[1])
+                pose = Pose(x=width, y=height, yaw=new_cell[1])
+                eMap.createMapTileBlock(eMap.map, frames_layer, width, height, None, pose)
                 add_new_obj(eMap.map, tiles_layer, "tiles", f'map_0/tile_{width}_{height}', {'i': width, 'j': height, 'type': new_cell[0]})
 
         watchtower_layer = MapLayer(eMap.map, "watchtowers")

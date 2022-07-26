@@ -11,6 +11,19 @@ REGISTER = {
     "tiles": Tile,
 }
 
+class Pose():
+    def __init__(self, x=0.0, y=0.0, z=0.0, pitch=0.0, roll=0.0, yaw=0.0):
+        self.x = x
+        self.y = y
+        self.z = z
+        self.pitch = pitch
+        self.roll = roll
+        self.yaw = yaw
+
+    def get_pose(self):
+       return {'x': self.x, 'y': self.y, 'z': self.z, 'roll': self.roll, 'pitch': self.pitch,
+                                                             'yaw': self.yaw}
+
 class emptyMap:
     def __init__(self, width, height, map_name="map_0", storage_location="./"):
         self.width = width
@@ -19,21 +32,21 @@ class emptyMap:
         self.storage_location = storage_location
         self.map = Map(map_name, storage_location)
 
-    def createMapTileBlock(self, M, frames_layer, tile_x, tile_y, relative_to, x, y, z, roll, pitch, yaw):
+    def createMapTileBlock(self, M, frames_layer, tile_x, tile_y, relative_to, pose: Pose):
         add_new_obj(M, frames_layer, "frames", f'map_0/tile_{tile_x}_{tile_y}',
                     {'relative_to': relative_to, 'pose': None})
-        frames_layer.write(f'map_0/tile_{tile_x}_{tile_y}', 'pose',
-                           {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
+        frames_layer[f'map_0/tile_{tile_x}_{tile_y}']['pose'] = pose.get_pose()
 
-    def createBlockFrames(self, M, frames_layer, relative_to, x, y, z, roll, pitch, yaw):
+    def createBlockFrames(self, M, frames_layer, relative_to, pose: Pose):
         add_new_obj(M, frames_layer, "frames", 'map_0', {'relative_to': relative_to, 'pose': None})
-        frames_layer.write("map_0", 'pose', {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
+        frames_layer["map_0"]['pose'] = pose.get_pose()
 
     def createFrames(self, frames_layer):
-        self.createBlockFrames(self.map, frames_layer, None, 1.0, 2.0, 0, 0, 0, 0)
+        self.createBlockFrames(self.map, frames_layer, None, Pose(x=1.0, y=2.0))
         for tile_y in range(0, self.height):
             for tile_x in range(0, self.width):
-                self.createMapTileBlock(self.map, frames_layer, tile_x, tile_y, None, tile_x, tile_y, 0, 0, 0, 0)
+                pose = Pose(x=tile_x, y=tile_y)
+                self.createMapTileBlock(self.map, frames_layer, tile_x, tile_y, None, pose)
 
     def createTiles(self, tiles_layer, type='floor'):
         for i in range(0, self.width):
@@ -72,12 +85,12 @@ class emptyMap:
             pitch = 0
             roll = 0
             yaw = elem[2]
+            pose = Pose(x=x, y=y, yaw=yaw)
 
             counter += 1
             add_new_obj(M, watchtowers_layer, "watchtowers", f"map_0/watchtower{counter}", {"configuration": "WT18"})
             add_new_obj(M, frames_layer, "frames", f'map_0/watchtower{counter}', {'relative_to': None, 'pose': None})
-            frames_layer.write(f'map_0/watchtower{counter}', 'pose',
-                               {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
+            frames_layer[f'map_0/watchtower{counter}']['pose'] = pose.get_pose()
 
     def createEmptyMap(self):
         frames_layer = MapLayer(self.map, "frames")
@@ -97,60 +110,6 @@ class emptyMap:
         self.map.to_disk()
 
 
-# def createMain():
-#     dict_file = {'main': {'frames': 'frames.yaml', 'tiles': 'tiles.yaml', 'tile_maps': 'tiles_maps.yaml'}}
-#     return dict_file
-
-# def createTileMaps():
-#     # add_new_obj(M, tile_maps_layer, "tile_maps", 'map_0', {'tile_size': {'x': 0.585, 'y': 0.585}})
-#     return {'map_0': {'tile_size': {'x': 0.585, 'y': 0.585}}}
-
-# def createBlockFrames(M, frames_layer, relative_to, x, y, z, roll, pitch, yaw):
-#     add_new_obj(M, frames_layer, "frames", 'map_0', {'relative_to': relative_to, 'pose': None})
-#     frames_layer.write("map_0", 'pose', {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
-
-# def createMapTileBlock(M, frames_layer, tile_x, tile_y, relative_to, x, y, z, roll, pitch, yaw):
-#     add_new_obj(M, frames_layer, "frames", f'map_0/tile_{tile_x}_{tile_y}', {'relative_to': relative_to, 'pose': None})
-#     frames_layer.write(f'map_0/tile_{tile_x}_{tile_y}', 'pose', {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
-
-# def createFrames():
-#     createBlockFrames(M, frames_layer, None, 1.0, 2.0, 0, 0, 0, 0)
-#     for tile_y in range(0,size):
-#         for tile_x in range(0, size):
-#             createMapTileBlock(tile_x, tile_y, None, tile_x, tile_y, 0, 0, 0, 0)
-
-# def createTiles(type = 'floor'):
-#     for i in range(0, size):
-#         for j in range(0, size):
-#             add_new_obj(M, tiles_layer, "tiles", f'map_0/tile_{i}_{j}', {'i': i, 'j': j, 'type': type})
-
-# def calc_xy_wt(elem: list):
-#     x = elem[0]
-#     y = elem[1]
-#     direction = elem[2]
-#     if direction == 0:
-#         return x + 0.4, y + 0.6
-#     if direction == 90:
-#         return x + 0.6, y - (1-0.585)
-#     if direction == 180:
-#         return x + 0.4, y - 0.6
-#     if direction == 270:
-#         return x - 0.6, y - (1 - 0.585)
-
-# def createWatchtowers(M, frames_layer, watchtowers_layer,wt_list:list):
-#     counter = 0
-#     for elem in wt_list:
-#         x, y = calc_xy_wt(elem)
-#         z = 0
-#         pitch = 0
-#         roll = 0
-#         yaw = elem[2]
-#
-#         counter+=1
-#         add_new_obj(M, watchtowers_layer,"watchtowers", f"map_0/watchtower{counter}",{"configuration": "WT18"})
-#         add_new_obj(M, frames_layer, "frames", f'map_0/watchtower{counter}', {'relative_to': None, 'pose': None})
-#         frames_layer.write(f'map_0/watchtower{counter}', 'pose', {'x': x, 'y': y, 'z': z, 'roll': roll, 'pitch': pitch, 'yaw': yaw})
-
 def add_new_obj(dm: Map,
                 layer: MapLayer,
                 layer_name: str, obj_name: str, default_conf: dict) -> None:
@@ -165,25 +124,3 @@ def add_new_obj(dm: Map,
 if __name__ == '__main__':
     eMap = emptyMap(width=9, height=8)
     eMap.createEmptyMap()
-    # size = 6
-    # M = Map("map_0", "./map")
-    #
-    # frames_layer = MapLayer(M, "frames")
-    # createFrames()
-    #
-    # tiles_layer = MapLayer(M, "tiles")
-    # createTiles()
-    #
-    # watchtowers_layer = MapLayer(M, "watchtowers")
-    # createWatchtowers()
-    #
-    # tile_maps_layer = MapLayer(M, "tile_maps", createTileMaps())
-    #
-    #
-    # # populate map
-    # M.layers.__dict__["frames"] = frames_layer
-    # M.layers.__dict__["tiles"] = tiles_layer
-    # M.layers.__dict__["tile_maps"] = tile_maps_layer
-    #
-    # # print(list(M.layers.items()))
-    # M.to_disk()
