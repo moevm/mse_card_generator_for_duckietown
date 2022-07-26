@@ -37,12 +37,12 @@ class emptyMap:
                     {'relative_to': relative_to, 'pose': None})
         frames_layer[f'map_0/tile_{tile_x}_{tile_y}']['pose'] = pose.get_pose()
 
-    def createBlockFrames(self, M, frames_layer, relative_to, pose: Pose):
+    def __createBlockFrames(self, M, frames_layer, relative_to, pose: Pose):
         add_new_obj(M, frames_layer, "frames", 'map_0', {'relative_to': relative_to, 'pose': None})
         frames_layer["map_0"]['pose'] = pose.get_pose()
 
     def createFrames(self, frames_layer):
-        self.createBlockFrames(self.map, frames_layer, None, Pose(x=1.0, y=2.0))
+        self.__createBlockFrames(self.map, frames_layer, None, Pose(x=1.0, y=2.0))
         for tile_y in range(0, self.height):
             for tile_x in range(0, self.width):
                 pose = Pose(x=tile_x, y=tile_y)
@@ -64,7 +64,7 @@ class emptyMap:
     #     dict_file = {'main': {'frames': 'frames.yaml', 'tiles': 'tiles.yaml', 'tile_maps': 'tiles_maps.yaml'}}
     #     return dict_file
 
-    def calc_xy_wt(self, elem: list):
+    def __calc_xy_wt(self, elem: list):
         x = elem[0]
         y = elem[1]
         direction = elem[2]
@@ -80,7 +80,7 @@ class emptyMap:
     def createWatchtowers(self, M, frames_layer, watchtowers_layer, wt_list: list):
         counter = 0
         for elem in wt_list:
-            x, y = self.calc_xy_wt(elem)
+            x, y = self.__calc_xy_wt(elem)
             z = 0
             pitch = 0
             roll = 0
