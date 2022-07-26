@@ -16,21 +16,6 @@ class DuckietownMap(object):
     DEFAULT_TILE_SIZE = 0.585
     # DEFAULT_TILE_SIZE = 1.0
 
-    CELLS = {
-        0: 'floor',
-        5: 'straight/N',
-        10: 'straight/E',
-        3: 'curve_right/W',
-        6: 'curve_right/N',
-        12: 'curve_left/N',
-        9: 'curve_left/E',
-        7: '3way_left/S',
-        11: '3way_left/E',
-        14: '3way_left/W',
-        13: '3way_left/N',
-        15: '4way'
-    }
-
     NEW_CELLS = { ### type, yaw
         0: ['floor', 0],
         5: ['straight', 0],
@@ -63,7 +48,7 @@ class DuckietownMap(object):
 
         for i in range(state.height):
             for j in range(state.width):
-                self._map[i][j] = self.CELLS[state.map[i][j]]
+                self._map[i][j] = self.NEW_CELLS[state.map[i][j]]
                 if state.map[i][j] == 14:
                     self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 0.25, i],'rotate': 45,'static': True})
                 if state.map[i][j] == 7:
@@ -220,7 +205,6 @@ class DuckietownMap(object):
 
         state = self._generator.get_state()
         old_map = state.map
-
         eMap = emptyMap(state.width, state.height)
 
         frames_layer = MapLayer(eMap.map, "frames")
