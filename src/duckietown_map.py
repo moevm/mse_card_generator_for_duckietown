@@ -1,4 +1,4 @@
-from advancedMap.advancedMap import advancedMap, Pose, add_new_obj
+from src.advancedMap import advancedMap, Pose, add_new_obj
 
 from dt_maps import MapLayer
 
