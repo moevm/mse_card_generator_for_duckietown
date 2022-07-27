@@ -1,9 +1,3 @@
-from src.generator import Generator
-
-import random
-import math
-import yaml
-
 from advancedMap.advancedMap import advancedMap, Pose, add_new_obj
 
 from dt_maps import MapLayer
@@ -12,7 +6,7 @@ from dt_maps import MapLayer
 class DuckietownMap(object):
     DEFAULT_TILE_SIZE = 0.585
 
-    NEW_CELLS = { ### type, yaw
+    NEW_CELLS = {   # type, yaw
         0: ['floor', 0],
         5: ['straight', 0],
         10: ['straight', 90],
@@ -45,125 +39,50 @@ class DuckietownMap(object):
         for i in range(state.height):
             for j in range(state.width):
                 self._map[i][j] = self.NEW_CELLS[state.map[i][j]]
-                if state.map[i][j] == 14:
-                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 0.25, i],'rotate': 45,'static': True})
-                if state.map[i][j] == 7:
-                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j, i + 0.25],'rotate': 45,'static': True})
-                if state.map[i][j] == 11:
-                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 0.25, i + 1],'rotate': 135,'static': True})
-                if state.map[i][j] == 13:
-                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 1, i + 0.25],'rotate': 315,'static': True})
-                if state.map[i][j] == 15:
-                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 0.25, i + 0.25],'rotate': 45,'static': True})
-
-                if self._map[i][j] == 'floor':
-                    building_type = random.choice(['duckie',
-                                                   'tree',
-                                                   'house'])
-
-                    if random.randint(0, 3) == 0:
-                        if building_type == 'house':
-                            self._objects.append({
-                                'height': 0.22, 'kind':building_type, 'pos': [j + 0.2925, i + 0.2925], 'rotate': 0
-                            })
-                        elif building_type == 'tree':
-                            for _ in range(random.randint(3, 7)):
-                                self._objects.append({
-                                    'height': 0.22,
-                                    'kind': building_type,
-                                    'pos': [j + random.random() * self.DEFAULT_TILE_SIZE, i + random.random() * self.DEFAULT_TILE_SIZE],
-                                    'rotate': 0
-                                })
-                        elif building_type == 'duckie':
-                            for _ in range(random.randint(1, 4)):
-                                self._objects.append({
-                                    'height': 0.04,
-                                    'kind': building_type,
-                                    'pos': [j + random.random() * self.DEFAULT_TILE_SIZE, i + random.random() * self.DEFAULT_TILE_SIZE],
-                                    'rotate': 0
-                                })
-
-
-                if state.map[i][j] == 14:
-                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 0.25, i],'rotate': 45,'static': True})
-                if state.map[i][j] == 7:
-                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j, i + 0.25],'rotate': 45,'static': True})
-                if state.map[i][j] == 11:
-                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 0.25, i + 1],'rotate': 135,'static': True})
-                if state.map[i][j] == 13:
-                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 1, i + 0.25],'rotate': 315,'static': True})
-                if state.map[i][j] == 15:
-                    self._objects.append({'height': 0.24,'kind': random.choice(['trafficlight']),'pos': [j + 0.25, i + 0.25],'rotate': 45,'static': True})
 
         self._data = {
             'tiles': self._map,
             'objects': self._objects,
             'tile_size': self.DEFAULT_TILE_SIZE
         }
-
         return self
-
-    def _create_objects(self):
-        for _ in range(random.randint(150, 151)):
-            duckie_pos = [1 + random.random(), 3 * random.random()]
-            my_pos = [3.5, 1.5]
-            vector = [duckie_pos[0] - my_pos[0], -duckie_pos[1] + my_pos[1]]
-
-            self._objects.append({
-                'height': 0.06,
-                'kind': random.choice(['sign_blank']),
-                'pos': duckie_pos,
-                'rotate': 160 + math.degrees(math.atan2(vector[1], vector[0])),
-                'static': True
-            })
-
-        self._objects.append({
-            'height': 0.06,
-            'kind': random.choice(['bus']),
-            'pos': [2.1, 1.5],
-            'rotate': 90,
-            'static': True
-        })
 
     def print_map(self, state):
         old_map = state.map
         # old_map =tuple(zip(*old_map[::-1])) #rotate to 90 degree
-        print("map=",old_map)
+        print("map=", old_map)
         for i in range(state.height):
             for j in range(state.width):
-                if old_map[i][j] != 0 :
+                if old_map[i][j] != 0:
                     print("#", end=' ')
                 else:
                     print("0", end=' ')
             print('\n', end='')
 
-
     def is_near_road(self, state, cells: list):
         old_map = state.map
         near_road_floor = []
         wt_list = []
-        # print(state.width, state.height)
         for i in range(0, len(cells)):
             cell = cells[i]
             a = cell[0]
             b = cell[1]
 
-            # print(a, b)
             if old_map[a + 1][b] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([a,b,90]) # сверху
+                wt_list.append([a, b, 90])  # сверху
 
             if old_map[a - 1][b] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([a,b,270]) # снизу
+                wt_list.append([a, b, 270])  # снизу
 
             if old_map[a][b + 1] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([a,b,0]) # слева
+                wt_list.append([a, b, 0])  # слева
 
             if old_map[a][b - 1] in (5, 10, 7, 11, 13, 14):
                 near_road_floor.append(cell)
-                wt_list.append([a,b,180]) # справа
+                wt_list.append([a, b, 180])  # справа
 
         list1 = near_road_floor
         list2 = []
@@ -174,7 +93,6 @@ class DuckietownMap(object):
         near_road_floor = list2
         return near_road_floor, wt_list
 
-
     def get_watchtowers_place(self, state):
         old_map = state.map
         width = state.width
@@ -182,7 +100,7 @@ class DuckietownMap(object):
 
         floor_list = []
         for i in range(1, height - 1):
-            for j in range(1, width-1):
+            for j in range(1, width - 1):
                 if old_map[i][j] == 0:
                     floor_list.append([i, j])
 
@@ -194,13 +112,13 @@ class DuckietownMap(object):
         state = self._generator.get_state()
         save_path = self._generator.get_save_path()
         old_map = state.map
-        aMap = advancedMap(state.width, state.height, storage_location=save_path)
+        a_map = advancedMap(state.width, state.height, storage_location=save_path)
 
-        frames_layer = MapLayer(aMap.map, "frames")
-        tiles_layer = MapLayer(aMap.map, "tiles")
-        tile_maps_layer = MapLayer(aMap.map, "tile_maps", aMap.createTileMaps())
+        frames_layer = MapLayer(a_map.map, "frames")
+        tiles_layer = MapLayer(a_map.map, "tiles")
+        tile_maps_layer = MapLayer(a_map.map, "tile_maps", a_map.createTileMaps())
 
-        add_new_obj(aMap.map, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
+        add_new_obj(a_map.map, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
         frames_layer['map_0']['pose'] = Pose(1.0, 2.0).get_pose()
 
         for height in range(0, state.width):
@@ -208,19 +126,19 @@ class DuckietownMap(object):
                 old_cell = old_map[width][height]
                 new_cell = self.NEW_CELLS[old_cell]
                 pose = Pose(x=width, y=height, yaw=new_cell[1])
-                aMap.createMapTileBlock(aMap.map, frames_layer, width, height, None, pose)
-                add_new_obj(aMap.map, tiles_layer, "tiles", f'map_0/tile_{width}_{height}', {'i': width, 'j': height, 'type': new_cell[0]})
+                a_map.createMapTileBlock(a_map.map, frames_layer, width, height, None, pose)
+                add_new_obj(a_map.map, tiles_layer, "tiles", f'map_0/tile_{width}_{height}',
+                            {'i': width, 'j': height, 'type': new_cell[0]})
 
-        watchtower_layer = MapLayer(aMap.map, "watchtowers")
+        watchtower_layer = MapLayer(a_map.map, "watchtowers")
         watchtowers_list = self.get_watchtowers_place(state)
-        aMap.createWatchtowers(aMap.map, frames_layer, watchtower_layer, watchtowers_list)
+        a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list)
 
-        aMap.map.layers.__dict__["watchtowers"] = watchtower_layer
-        aMap.map.layers.__dict__["frames"] = frames_layer
-        aMap.map.layers.__dict__["tiles"] = tiles_layer
-        aMap.map.layers.__dict__["tile_maps"] = tile_maps_layer
-        aMap.map.to_disk()
-
+        a_map.map.layers.__dict__["watchtowers"] = watchtower_layer
+        a_map.map.layers.__dict__["frames"] = frames_layer
+        a_map.map.layers.__dict__["tiles"] = tiles_layer
+        a_map.map.layers.__dict__["tile_maps"] = tile_maps_layer
+        a_map.map.to_disk()
 
     def save(self):
-        self.save_new_architecture()                 ### reload to new arch map
+        self.save_new_architecture()  # reload to new arch map
