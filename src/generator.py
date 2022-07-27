@@ -56,7 +56,7 @@ class Generator(object):
         return self._path
 
     def _all_crossroads_created(self):
-            return self._crossroads_data['triple'] == 0 and self._crossroads_data['quad'] == 0
+        return self._crossroads_data['triple'] == 0 and self._crossroads_data['quad'] == 0
 
     def correct_cycle_node_condition(self, _cell):
         return True
@@ -243,7 +243,7 @@ class Generator(object):
         self._current_road_length = 1
 
         while not algorithm_end_condition(current_cell) and queue.__len__() > 0:
-            #self.debug()
+            # self.debug()
 
             neighbours = self._get_neighbours(current_cell, lambda c: transition_condition(c) and \
                                                                       self._current_road_length != self._max_length and \

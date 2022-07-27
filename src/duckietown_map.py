@@ -6,7 +6,7 @@ from dt_maps import MapLayer
 class DuckietownMap(object):
     DEFAULT_TILE_SIZE = 0.585
 
-    NEW_CELLS = {   # type, yaw
+    NEW_CELLS = {  # type, yaw
         0: ['floor', 0],
         5: ['straight', 0],
         10: ['straight', 90],

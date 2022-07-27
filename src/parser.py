@@ -1,6 +1,7 @@
 import argparse
 import random
 
+
 class Parser(object):
     def __init__(self):
         pass
@@ -9,7 +10,8 @@ class Parser(object):
     def parse():
         parser = argparse.ArgumentParser()
         parser.add_argument('--size', default='7x7', type=str, action='store', help='map size')
-        parser.add_argument('--crossroad_count', default='', type=str, action='store', help='crossroads count and type\nFor example:\n4\n4T\n4Q\n4T2Q')
+        parser.add_argument('--crossroad_count', default='', type=str, action='store',
+                            help='crossroads count and type\nFor example:\n4\n4T\n4Q\n4T2Q')
         parser.add_argument('--road_length', default=15, type=str, action='store', help='maximum road length')
         parser.add_argument('--cycles', default=-1, type=int, action='store', help='cycles count')
         parser.add_argument('--path', default='./maps', type=str, action='store', help='save map directory')
