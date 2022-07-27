@@ -91,7 +91,6 @@ class Generator(object):
 
         while not self._all_crossroads_created():
             if not self._add_layer(accepted_cells):
-                print('aaaa')
                 break
 
             self.debug()

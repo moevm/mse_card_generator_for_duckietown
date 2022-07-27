@@ -10,7 +10,6 @@ from dt_maps import MapLayer
 
 
 class DuckietownMap(object):
-    DEFAULT_MAP_NAME = './maps/new_map.yaml'
     DEFAULT_TILE_SIZE = 0.585
 
     NEW_CELLS = { ### type, yaw
@@ -223,9 +222,5 @@ class DuckietownMap(object):
         aMap.map.to_disk()
 
 
-    def save(self, file_name=DEFAULT_MAP_NAME):
-
-        self.save_new_architecture()            ### reload to new arch map
-        with open(file_name, 'w') as fout:
-            fout.write(yaml.dump(self._data))
-
+    def save(self):
+        self.save_new_architecture()                 ### reload to new arch map
