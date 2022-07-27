@@ -4,18 +4,14 @@ import random
 import math
 import yaml
 
-from emptyMapGenerator.emptyMap import emptyMap, Pose, add_new_obj
+from advancedMap.advancedMap import advancedMap, Pose, add_new_obj
 
-from dt_maps import Map, MapLayer
-from dt_maps.types.tiles import Tile
-from dt_maps.types.frames import Frame
-from dt_maps.types.watchtowers import Watchtower
+from dt_maps import MapLayer
 
 
 class DuckietownMap(object):
     DEFAULT_MAP_NAME = './maps/new_map.yaml'
     DEFAULT_TILE_SIZE = 0.585
-    # DEFAULT_TILE_SIZE = 1.0
 
     NEW_CELLS = { ### type, yaw
         0: ['floor', 0],
@@ -187,30 +183,25 @@ class DuckietownMap(object):
 
         floor_list = []
         for i in range(1, height - 1):
-            for j in range(1,width-1):
+            for j in range(1, width-1):
                 if old_map[i][j] == 0:
-                    floor_list.append([i,j])
+                    floor_list.append([i, j])
 
-        # self.print_map(state)
-        # print("floor_list", floor_list)
         flor_near_road, watchtowers_list = self.is_near_road(state, floor_list)
-
-        # print("flor_near_road",flor_near_road)
-        # print("watchtower_list=",watchtowers_list)
-        self.print_map(state)
-        return  watchtowers_list
+        return watchtowers_list
 
     def save_new_architecture(self):
 
         state = self._generator.get_state()
+        save_path = self._generator.get_save_path()
         old_map = state.map
-        eMap = emptyMap(state.width, state.height)
+        aMap = advancedMap(state.width, state.height, storage_location=save_path)
 
-        frames_layer = MapLayer(eMap.map, "frames")
-        tiles_layer = MapLayer(eMap.map, "tiles")
-        tile_maps_layer = MapLayer(eMap.map, "tile_maps", eMap.createTileMaps())
+        frames_layer = MapLayer(aMap.map, "frames")
+        tiles_layer = MapLayer(aMap.map, "tiles")
+        tile_maps_layer = MapLayer(aMap.map, "tile_maps", aMap.createTileMaps())
 
-        add_new_obj(eMap.map, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
+        add_new_obj(aMap.map, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
         frames_layer['map_0']['pose'] = Pose(1.0, 2.0).get_pose()
 
         for height in range(0, state.width):
@@ -218,19 +209,18 @@ class DuckietownMap(object):
                 old_cell = old_map[width][height]
                 new_cell = self.NEW_CELLS[old_cell]
                 pose = Pose(x=width, y=height, yaw=new_cell[1])
-                eMap.createMapTileBlock(eMap.map, frames_layer, width, height, None, pose)
-                add_new_obj(eMap.map, tiles_layer, "tiles", f'map_0/tile_{width}_{height}', {'i': width, 'j': height, 'type': new_cell[0]})
+                aMap.createMapTileBlock(aMap.map, frames_layer, width, height, None, pose)
+                add_new_obj(aMap.map, tiles_layer, "tiles", f'map_0/tile_{width}_{height}', {'i': width, 'j': height, 'type': new_cell[0]})
 
-        watchtower_layer = MapLayer(eMap.map, "watchtowers")
+        watchtower_layer = MapLayer(aMap.map, "watchtowers")
         watchtowers_list = self.get_watchtowers_place(state)
-        eMap.createWatchtowers(eMap.map, frames_layer, watchtower_layer, watchtowers_list)
-       # print(old_map)
+        aMap.createWatchtowers(aMap.map, frames_layer, watchtower_layer, watchtowers_list)
 
-        eMap.map.layers.__dict__["watchtowers"] = watchtower_layer
-        eMap.map.layers.__dict__["frames"] = frames_layer
-        eMap.map.layers.__dict__["tiles"] = tiles_layer
-        eMap.map.layers.__dict__["tile_maps"] = tile_maps_layer
-        eMap.map.to_disk()
+        aMap.map.layers.__dict__["watchtowers"] = watchtower_layer
+        aMap.map.layers.__dict__["frames"] = frames_layer
+        aMap.map.layers.__dict__["tiles"] = tiles_layer
+        aMap.map.layers.__dict__["tile_maps"] = tile_maps_layer
+        aMap.map.to_disk()
 
 
     def save(self, file_name=DEFAULT_MAP_NAME):

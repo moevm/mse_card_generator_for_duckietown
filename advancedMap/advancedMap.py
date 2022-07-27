@@ -1,5 +1,3 @@
-import yaml
-
 from dt_maps import Map, MapLayer
 from dt_maps.types.tiles import Tile
 from dt_maps.types.frames import Frame
@@ -21,16 +19,16 @@ class Pose():
         self.yaw = yaw
 
     def get_pose(self):
-       return {'x': self.x, 'y': self.y, 'z': self.z, 'roll': self.roll, 'pitch': self.pitch,
-                                                             'yaw': self.yaw}
+       return {'x': self.x, 'y': self.y, 'z': self.z, 'roll': self.roll, 'pitch': self.pitch, 'yaw': self.yaw}
 
-class emptyMap:
+
+class advancedMap:
     def __init__(self, width, height, map_name="map_0", storage_location="./"):
         self.width = width
         self.height = height
         self.map_name = map_name
         self.storage_location = storage_location
-        self.map = Map(map_name, storage_location)
+        self.map = Map(name=map_name, path=storage_location)
 
     def createMapTileBlock(self, M, frames_layer, tile_x, tile_y, relative_to, pose: Pose):
         add_new_obj(M, frames_layer, "frames", f'map_0/tile_{tile_x}_{tile_y}',
@@ -81,9 +79,6 @@ class emptyMap:
         counter = 0
         for elem in wt_list:
             x, y = self.__calc_xy_wt(elem)
-            z = 0
-            pitch = 0
-            roll = 0
             yaw = elem[2]
             pose = Pose(x=x, y=y, yaw=yaw)
 
@@ -105,8 +100,6 @@ class emptyMap:
         self.map.layers.__dict__["frames"] = frames_layer
         self.map.layers.__dict__["tiles"] = tiles_layer
         self.map.layers.__dict__["tile_maps"] = tile_maps_layer
-
-        # print(list(M.layers.items()))
         self.map.to_disk()
 
 
@@ -122,5 +115,5 @@ def add_new_obj(dm: Map,
 
 
 if __name__ == '__main__':
-    eMap = emptyMap(width=9, height=8)
+    eMap = advancedMap(width=9, height=8, storage_location="./maps")
     eMap.createEmptyMap()

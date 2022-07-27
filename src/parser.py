@@ -12,13 +12,13 @@ class Parser(object):
         parser.add_argument('--crossroad_count', default='', type=str, action='store', help='crossroads count and type\nFor example:\n4\n4T\n4Q\n4T2Q')
         parser.add_argument('--road_length', default=15, type=str, action='store', help='maximum road length')
         parser.add_argument('--cycles', default=-1, type=int, action='store', help='cycles count')
+        parser.add_argument('--path', default='./maps', type=str, action='store', help='save map directory')
 
         width, height = list(map(int, (parser.parse_args().size).split('x')))
         length = int(parser.parse_args().road_length)
         triple, quad = Parser.parse_crossroads(parser.parse_args().crossroad_count)
         cycles = parser.parse_args().cycles
-
-        print('cycles = {}'.format(cycles))
+        path = parser.parse_args().path
 
         if cycles > 0:
             if cycles != 1 + quad + 0.5 * triple:
@@ -28,6 +28,7 @@ class Parser(object):
             'width': width,
             'height': height,
             'length': length,
+            'path': path,
             'crossroads_data': {
                 'triple': triple,
                 'quad': quad

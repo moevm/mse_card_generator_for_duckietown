@@ -38,6 +38,7 @@ class Generator(object):
         self._crossroads_data = settings['crossroads_data']
         self._current_road_length = 0
         self._max_length = settings['length']
+        self._path = settings['path']
 
         self._cells = [[self.Cell(Position(x, y)) for x in range(self._width)] for y in range(self._height)]
         self.__cannot_be_used_as_node = []
@@ -51,6 +52,9 @@ class Generator(object):
 
     def get_state(self):
         return self._state
+
+    def get_save_path(self):
+        return self._path
 
     def _all_crossroads_created(self):
             return self._crossroads_data['triple'] == 0 and self._crossroads_data['quad'] == 0
