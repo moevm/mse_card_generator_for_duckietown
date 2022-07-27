@@ -1,5 +1,3 @@
-#/usr/bin/python3.7
-
 from src.parser import Parser
 from src.generator import Generator
 from src.duckietown_map import DuckietownMap
