@@ -47,5 +47,4 @@ if [[ -z ${SAVE_PATH} ]]; then
   SAVE_PATH="./maps"
 fi
 
-python3.8 main.py --size $MAP_SIZE --crossroad_count $CROSSROAD_COUNT --road_length $LENGTH --path $SAVE_PATH
-python3.8 ${DUCKIE_TOWN_PATH}/manual_control.py --env-name Duckietown-small_loop-v0 --seed 2 --map-name ./maps/new_map.yaml
+python3 main.py --size $MAP_SIZE --crossroad_count $CROSSROAD_COUNT --road_length $LENGTH --path $SAVE_PATH
