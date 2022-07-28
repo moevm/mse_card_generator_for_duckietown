@@ -1,5 +1,5 @@
-# mse_map_generator_for_duckietown
+# dt_map_generator
 
-## Запуск
-1. Добавить путь до duckietown в переменную окружения DUCKIE_TOWN_PATH.
-2. Запустить run.sh --size <размер карты в 7x7 по умолчанию>
+## Установка
+
+    pip3 install git+https://github.com/moevm/mse_map_generator_for_duckietown@make_lib 
