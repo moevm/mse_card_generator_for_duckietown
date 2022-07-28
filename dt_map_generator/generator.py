@@ -1,4 +1,4 @@
-from src.basics.basics import Position
+from dt_map_generator.basics.basics import Position
 
 import random
 from collections import deque

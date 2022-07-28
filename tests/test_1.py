@@ -5,7 +5,7 @@
 """
 
 """
-Данный скрипт тестирует функции "_get_neighbours", "_generate_state" класса "Generator" из файла src/generator.py
+Данный скрипт тестирует функции "_get_neighbours", "_generate_state" класса "Generator" из файла dt_map_generator/generator.py
 """
 
 import sys
@@ -15,8 +15,8 @@ sys.path.append('..')
 import pytest
 from json import load
 
-from src.generator import Generator
-from src.basics.basics import Position
+from dt_map_generator.generator import Generator
+from dt_map_generator.basics.basics import Position
 
 with open('test_suit.json', 'r', encoding='utf-8') as f:
     data = load(f)
@@ -25,6 +25,7 @@ generator = Generator({
     'width':5,
     'height':5,
     'length': 10,
+    'path': '../maps',
     'crossroads_data': {
         'triple': 1,
         'quad': 1
@@ -35,6 +36,7 @@ generator_large = Generator({
     'width':9,
     'height':9,
     'length': 10,
+    'path': '../maps',
     'crossroads_data': {
         'triple': 1,
         'quad': 1
