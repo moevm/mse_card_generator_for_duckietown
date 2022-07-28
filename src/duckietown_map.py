@@ -67,20 +67,21 @@ class DuckietownMap(object):
             cell = cells[i]
             a = cell[0]
             b = cell[1]
+            road_cells = (5, 10, 7, 11, 13, 14)
 
-            if old_map[a + 1][b] in (5, 10, 7, 11, 13, 14):
+            if old_map[a + 1][b] in road_cells:
                 near_road_floor.append(cell)
                 wt_list.append([a, b, 90])  # сверху
 
-            if old_map[a - 1][b] in (5, 10, 7, 11, 13, 14):
+            if old_map[a - 1][b] in road_cells:
                 near_road_floor.append(cell)
                 wt_list.append([a, b, 270])  # снизу
 
-            if old_map[a][b + 1] in (5, 10, 7, 11, 13, 14):
+            if old_map[a][b + 1] in road_cells:
                 near_road_floor.append(cell)
                 wt_list.append([a, b, 0])  # слева
 
-            if old_map[a][b - 1] in (5, 10, 7, 11, 13, 14):
+            if old_map[a][b - 1] in road_cells:
                 near_road_floor.append(cell)
                 wt_list.append([a, b, 180])  # справа
 
@@ -106,6 +107,9 @@ class DuckietownMap(object):
 
         flor_near_road, watchtowers_list = self.is_near_road(state, floor_list)
         return watchtowers_list
+
+    def connect_layers(self, a_map:advancedMap, layer_name:str, layers: dict):
+        a_map.map.layers.__dict__[layer_name] = layers[layer_name]
 
     def save_new_architecture(self):
 
@@ -134,10 +138,16 @@ class DuckietownMap(object):
         watchtowers_list = self.get_watchtowers_place(state)
         a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list)
 
-        a_map.map.layers.__dict__["watchtowers"] = watchtower_layer
-        a_map.map.layers.__dict__["frames"] = frames_layer
-        a_map.map.layers.__dict__["tiles"] = tiles_layer
-        a_map.map.layers.__dict__["tile_maps"] = tile_maps_layer
+        layers ={
+            "watchtowers": watchtower_layer,
+            "frames": frames_layer,
+            "tiles": tiles_layer,
+            "tile_maps": tile_maps_layer
+        }
+
+        for layer in layers:
+            self.connect_layers(a_map, layer, layers)
+
         a_map.map.to_disk()
 
     def save(self):
