@@ -1,12 +1,24 @@
+import random
+
 from dt_maps import Map, MapLayer
 from dt_maps.types.tiles import Tile
 from dt_maps.types.frames import Frame
 from dt_maps.types.watchtowers import Watchtower
+from dt_maps.types.traffic_signs import TrafficSign
+from dt_maps.types.ground_tags import GroundTag
+from dt_maps.types.citizens import Citizen
+from dt_maps.types.vehicles import Vehicle
+
+DEFAULT_TILE_SIZE = 0.585
 
 REGISTER = {
     "frames": Frame,
     "watchtowers": Watchtower,
     "tiles": Tile,
+    "traffic_signs": TrafficSign,
+    "ground_tags": GroundTag,
+    "citizens": Citizen,
+    "vehicles": Vehicle,
 }
 
 class Pose():
@@ -23,7 +35,7 @@ class Pose():
 
 
 class advancedMap:
-    def __init__(self, width, height, map_name="map_0", storage_location="./"):
+    def __init__(self, width, height, map_name="map_1", storage_location="./"):
         self.width = width
         self.height = height
         self.map_name = map_name
@@ -31,13 +43,13 @@ class advancedMap:
         self.map = Map(name=map_name, path=storage_location)
 
     def createMapTileBlock(self, M, frames_layer, tile_x, tile_y, relative_to, pose: Pose):
-        add_new_obj(M, frames_layer, "frames", f'map_0/tile_{tile_x}_{tile_y}',
+        add_new_obj(M, frames_layer, "frames", f'{self.map_name}/tile_{tile_x}_{tile_y}',
                     {'relative_to': relative_to, 'pose': None})
-        frames_layer[f'map_0/tile_{tile_x}_{tile_y}']['pose'] = pose.get_pose()
+        frames_layer[f'{self.map_name}/tile_{tile_x}_{tile_y}']['pose'] = pose.get_pose()
 
     def __createBlockFrames(self, M, frames_layer, relative_to, pose: Pose):
-        add_new_obj(M, frames_layer, "frames", 'map_0', {'relative_to': relative_to, 'pose': None})
-        frames_layer["map_0"]['pose'] = pose.get_pose()
+        add_new_obj(M, frames_layer, "frames", f'{self.map_name}', {'relative_to': relative_to, 'pose': None})
+        frames_layer[f"{self.map_name}"]['pose'] = pose.get_pose()
 
     def createFrames(self, frames_layer):
         self.__createBlockFrames(self.map, frames_layer, None, Pose(x=1.0, y=2.0))
@@ -49,11 +61,11 @@ class advancedMap:
     def createTiles(self, tiles_layer, type='floor'):
         for i in range(0, self.width):
             for j in range(0, self.height):
-                add_new_obj(self.map, tiles_layer, "tiles", f'map_0/tile_{i}_{j}', {'i': i, 'j': j, 'type': type})
+                add_new_obj(self.map, tiles_layer, "tiles", f'{self.map_name}/tile_{i}_{j}', {'i': i, 'j': j, 'type': type})
 
     def createTileMaps(self):
-        # add_new_obj(M, tile_maps_layer, "tile_maps", 'map_0', {'tile_size': {'x': 0.585, 'y': 0.585}})
-        return {'map_0': {'tile_size': {'x': 0.585, 'y': 0.585}}}
+        # add_new_obj(M, tile_maps_layer, "tile_maps", f'{self.map_name}', {'tile_size': {'x': 0.585, 'y': 0.585}})
+        return {f'{self.map_name}': {'tile_size': {'x': 0.585, 'y': 0.585}}}
 
     '''
     Main creation doesnt work
@@ -80,12 +92,61 @@ class advancedMap:
         for elem in wt_list:
             x, y = self.__calc_xy_wt(elem)
             yaw = elem[2]
-            pose = Pose(x=x, y=y, yaw=yaw)
+            pose = Pose(x=(x) * DEFAULT_TILE_SIZE, y=(y+0.5) * DEFAULT_TILE_SIZE, yaw=yaw)
 
             counter += 1
-            add_new_obj(M, watchtowers_layer, "watchtowers", f"map_0/watchtower{counter}", {"configuration": "WT18"})
-            add_new_obj(M, frames_layer, "frames", f'map_0/watchtower{counter}', {'relative_to': None, 'pose': None})
-            frames_layer[f'map_0/watchtower{counter}']['pose'] = pose.get_pose()
+            add_new_obj(M, watchtowers_layer, "watchtowers", f"{self.map_name}/watchtower{counter}", {"configuration": "WT18"})
+            add_new_obj(M, frames_layer, "frames", f'{self.map_name}/watchtower{counter}', {'relative_to': None, 'pose': None})
+            frames_layer[f'{self.map_name}/watchtower{counter}']['pose'] = pose.get_pose()
+
+    def generateRandomPose(self):
+        max_width = self.width
+        max_height = self.height
+        min_width = 0
+        min_height = 0
+
+        generated_x = random.uniform(min_width, max_width) * DEFAULT_TILE_SIZE
+        generated_y = random.uniform(min_height, max_height) * DEFAULT_TILE_SIZE
+
+        pose = Pose(generated_x, generated_y)
+        return pose
+    def createTrafficSigns(self, M, frames_layer, traffic_signs_layer, n):
+        types = ["stop", "pedestrian"] #TODO
+        for counter in range(0,n):
+            pose = self.generateRandomPose()
+            add_new_obj(M, traffic_signs_layer, "traffic_signs", f"{self.map_name}/traffic_signs{counter}", {"family": "36h11", "id": 1, "type": "stop"})
+            add_new_obj(M, frames_layer, "frames", f'{self.map_name}/traffic_signs{counter}', {'relative_to': None, 'pose': None})
+            frames_layer[f'{self.map_name}/traffic_signs{counter}']['pose'] = pose.get_pose()
+
+    def createGroundTags(self, M, frames_layer, ground_tags_layer, n):
+        for counter in range(0, n):
+            pose = self.generateRandomPose()
+            add_new_obj(M, ground_tags_layer, "ground_tags", f"{self.map_name}/ground_tags{counter}",
+                        {"family": "36h11", "id": 1, "size": 0.15})
+            add_new_obj(M, frames_layer, "frames", f'{self.map_name}/ground_tags{counter}',
+                        {'relative_to': None, 'pose': None})
+            frames_layer[f'{self.map_name}/ground_tags{counter}']['pose'] = pose.get_pose()
+
+    def createCitizens(self, M, frames_layer, citizens_layer, n):
+        for counter in range(0, n):
+            pose = self.generateRandomPose()
+            add_new_obj(M, citizens_layer, "citizens", f"duckie{counter}",
+                        {"color": "yellow"})
+            add_new_obj(M, frames_layer, "frames", f'duckie{counter}',
+                        {'relative_to': None, 'pose': None})
+            frames_layer[f'duckie{counter}']['pose'] = pose.get_pose()
+
+
+    def createVehicles(self, M, frames_layer, vehicles_layer, n):
+         for counter in range(0, n):
+             pose = self.generateRandomPose()
+             add_new_obj(M, vehicles_layer, "vehicles", f"{self.map_name}/vehicle{counter}",
+                         {"configuration": "DB19", "color": "blue", "id": 1})
+             add_new_obj(M, frames_layer, "frames", f'{self.map_name}/vehicle{counter}',
+                         {'relative_to': None, 'pose': None})
+             frames_layer[f'{self.map_name}/vehicle{counter}']['pose'] = pose.get_pose()
+
+
 
     def createEmptyMap(self):
         frames_layer = MapLayer(self.map, "frames")
