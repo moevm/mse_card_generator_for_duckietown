@@ -1,3 +1,5 @@
+import random
+
 from dt_maps import Map, MapLayer
 from dt_maps.types.tiles import Tile
 from dt_maps.types.frames import Frame
@@ -91,16 +93,33 @@ class advancedMap:
             add_new_obj(M, frames_layer, "frames", f'{self.map_name}/watchtower{counter}', {'relative_to': None, 'pose': None})
             frames_layer[f'{self.map_name}/watchtower{counter}']['pose'] = pose.get_pose()
 
+    def generateRandomPose(self):
+        max_width = self.width
+        max_height = self.height
+        min_width = 0
+        min_height = 0
+
+        generated_x = random.uniform(min_width, max_width)
+        generated_y = random.uniform(min_height, max_height)
+
+        pose = Pose(generated_x, generated_y)
+        return pose
     def createTrafficSigns(self, M, frames_layer, traffic_signs_layer, n):
         types = ["stop", "pedestrian"] #TODO
         for counter in range(0,n):
-            pose = Pose(x=1.2, y=2.4)
+            pose = self.generateRandomPose()
             add_new_obj(M, traffic_signs_layer, "traffic_signs", f"{self.map_name}/traffic_signs{counter}", {"family": "36h11", "id": 1, "type": "stop"})
             add_new_obj(M, frames_layer, "frames", f'{self.map_name}/traffic_signs{counter}', {'relative_to': None, 'pose': None})
             frames_layer[f'{self.map_name}/traffic_signs{counter}']['pose'] = pose.get_pose()
 
     def createGroundTags(self, M, frames_layer, ground_tags_layer, n):
-        pass
+        for counter in range(0, n):
+            pose = self.generateRandomPose()
+            add_new_obj(M, ground_tags_layer, "ground_tags", f"{self.map_name}/ground_tags{counter}",
+                        {"family": "36h11", "id": 1, "size": 0.15})
+            add_new_obj(M, frames_layer, "frames", f'{self.map_name}/ground_tags{counter}',
+                        {'relative_to': None, 'pose': None})
+            frames_layer[f'{self.map_name}/ground_tags{counter}']['pose'] = pose.get_pose()
 
     def createEmptyMap(self):
         frames_layer = MapLayer(self.map, "frames")

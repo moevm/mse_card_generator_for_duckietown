@@ -122,6 +122,7 @@ class DuckietownMap(object):
         tiles_layer = MapLayer(a_map.map, "tiles")
         tile_maps_layer = MapLayer(a_map.map, "tile_maps", a_map.createTileMaps())
         traffic_signs_layer = MapLayer(a_map.map, "traffic_signs")
+        ground_tags_layer = MapLayer(a_map, "ground_tags")
 
         add_new_obj(a_map.map, frames_layer, "frames", f'{a_map.map_name}', {'relative_to': None, 'pose': None})
         frames_layer[f'{a_map.map_name}']['pose'] = Pose(1.0, 2.0).get_pose()
@@ -139,6 +140,7 @@ class DuckietownMap(object):
         watchtowers_list = self.get_watchtowers_place(state)
         a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list)
         a_map.createTrafficSigns(a_map.map, frames_layer, traffic_signs_layer, 1)
+        a_map.createGroundTags(a_map.map, frames_layer, ground_tags_layer, 2)
 
         layers ={
             "watchtowers": watchtower_layer,
@@ -146,6 +148,7 @@ class DuckietownMap(object):
             "tiles": tiles_layer,
             "tile_maps": tile_maps_layer,
             "traffic_signs": traffic_signs_layer,
+            "ground_tags": ground_tags_layer,
         }
 
         for layer in layers:
