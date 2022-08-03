@@ -121,9 +121,10 @@ class DuckietownMap(object):
         frames_layer = MapLayer(a_map.map, "frames")
         tiles_layer = MapLayer(a_map.map, "tiles")
         tile_maps_layer = MapLayer(a_map.map, "tile_maps", a_map.createTileMaps())
+        traffic_signs_layer = MapLayer(a_map.map, "traffic_signs")
 
-        add_new_obj(a_map.map, frames_layer, "frames", 'map_0', {'relative_to': None, 'pose': None})
-        frames_layer['map_0']['pose'] = Pose(1.0, 2.0).get_pose()
+        add_new_obj(a_map.map, frames_layer, "frames", f'{a_map.map_name}', {'relative_to': None, 'pose': None})
+        frames_layer[f'{a_map.map_name}']['pose'] = Pose(1.0, 2.0).get_pose()
 
         for height in range(0, state.width):
             for width in range(0, state.height):
@@ -131,18 +132,20 @@ class DuckietownMap(object):
                 new_cell = self.NEW_CELLS[old_cell]
                 pose = Pose(x=width, y=height, yaw=new_cell[1])
                 a_map.createMapTileBlock(a_map.map, frames_layer, width, height, None, pose)
-                add_new_obj(a_map.map, tiles_layer, "tiles", f'map_0/tile_{width}_{height}',
+                add_new_obj(a_map.map, tiles_layer, "tiles", f'{a_map.map_name}/tile_{width}_{height}',
                             {'i': width, 'j': height, 'type': new_cell[0]})
 
         watchtower_layer = MapLayer(a_map.map, "watchtowers")
         watchtowers_list = self.get_watchtowers_place(state)
         a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list)
+        a_map.createTrafficSigns(a_map.map, frames_layer, traffic_signs_layer, 1)
 
         layers ={
             "watchtowers": watchtower_layer,
             "frames": frames_layer,
             "tiles": tiles_layer,
-            "tile_maps": tile_maps_layer
+            "tile_maps": tile_maps_layer,
+            "traffic_signs": traffic_signs_layer,
         }
 
         for layer in layers:
