@@ -1,0 +1,47 @@
+watchtowers:
+  map_0/watchtower1:
+    configuration: WT18
+  map_0/watchtower10:
+    configuration: WT18
+  map_0/watchtower11:
+    configuration: WT18
+  map_0/watchtower12:
+    configuration: WT18
+  map_0/watchtower13:
+    configuration: WT18
+  map_0/watchtower14:
+    configuration: WT18
+  map_0/watchtower15:
+    configuration: WT18
+  map_0/watchtower16:
+    configuration: WT18
+  map_0/watchtower17:
+    configuration: WT18
+  map_0/watchtower18:
+    configuration: WT18
+  map_0/watchtower19:
+    configuration: WT18
+  map_0/watchtower2:
+    configuration: WT18
+  map_0/watchtower20:
+    configuration: WT18
+  map_0/watchtower21:
+    configuration: WT18
+  map_0/watchtower22:
+    configuration: WT18
+  map_0/watchtower23:
+    configuration: WT18
+  map_0/watchtower3:
+    configuration: WT18
+  map_0/watchtower4:
+    configuration: WT18
+  map_0/watchtower5:
+    configuration: WT18
+  map_0/watchtower6:
+    configuration: WT18
+  map_0/watchtower7:
+    configuration: WT18
+  map_0/watchtower8:
+    configuration: WT18
+  map_0/watchtower9:
+    configuration: WT18

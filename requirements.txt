@@ -1,0 +1,4 @@
+pytest
+setuptools
+
+git+https://github.com/OSLL/lib-dt-maps.git@new_layer

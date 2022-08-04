@@ -5,7 +5,7 @@
 """
 
 """
-Данный скрипт будет тестировать функции класса DuckietownMap из файла src/duckietowm_map.py 
+Данный скрипт будет тестировать функции класса DuckietownMap из файла dt_map_generator/duckietowm_map.py 
 Пока он ничего не тестирует)
 """
 

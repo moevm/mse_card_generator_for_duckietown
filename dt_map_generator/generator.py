@@ -1,7 +1,6 @@
-from src.basics.basics import Position
+from dt_map_generator.basics.basics import Position
 
 import random
-import time
 from collections import deque
 from dataclasses import dataclass
 
@@ -38,6 +37,7 @@ class Generator(object):
         self._crossroads_data = settings['crossroads_data']
         self._current_road_length = 0
         self._max_length = settings['length']
+        self._path = settings['path']
 
         self._cells = [[self.Cell(Position(x, y)) for x in range(self._width)] for y in range(self._height)]
         self.__cannot_be_used_as_node = []
@@ -52,8 +52,11 @@ class Generator(object):
     def get_state(self):
         return self._state
 
+    def get_save_path(self):
+        return self._path
+
     def _all_crossroads_created(self):
-            return self._crossroads_data['triple'] == 0 and self._crossroads_data['quad'] == 0
+        return self._crossroads_data['triple'] == 0 and self._crossroads_data['quad'] == 0
 
     def correct_cycle_node_condition(self, _cell):
         return True
@@ -87,7 +90,6 @@ class Generator(object):
 
         while not self._all_crossroads_created():
             if not self._add_layer(accepted_cells):
-                print('aaaa')
                 break
 
             self.debug()
@@ -241,7 +243,7 @@ class Generator(object):
         self._current_road_length = 1
 
         while not algorithm_end_condition(current_cell) and queue.__len__() > 0:
-            #self.debug()
+            # self.debug()
 
             neighbours = self._get_neighbours(current_cell, lambda c: transition_condition(c) and \
                                                                       self._current_road_length != self._max_length and \
