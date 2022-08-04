@@ -1,7 +1,7 @@
 from dt_map_generator.advancedMap import advancedMap, Pose, add_new_obj
 
 from dt_maps import MapLayer
-from generator import Generator
+from dt_map_generator.generator import Generator
 
 class DuckietownMap(object):
     DEFAULT_TILE_SIZE = 0.585
