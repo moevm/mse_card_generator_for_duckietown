@@ -8,8 +8,6 @@ from dt_maps.types.traffic_signs import TrafficSign
 from dt_maps.types.ground_tags import GroundTag
 from dt_maps.types.citizens import Citizen
 from dt_maps.types.vehicles import Vehicle
-# from duckietown_map import DuckietownMap
-# from generator import Generator
 
 DEFAULT_TILE_SIZE = 0.585
 
@@ -38,6 +36,7 @@ NEW_CELLS = {  # type, yaw
     15: ['4way', 0]
 }
 
+
 class Pose():
     def __init__(self, x=0.0, y=0.0, z=0.0, pitch=0.0, roll=0.0, yaw=0.0):
         self.x = x
@@ -48,7 +47,7 @@ class Pose():
         self.yaw = yaw
 
     def get_pose(self):
-       return {'x': self.x, 'y': self.y, 'z': self.z, 'roll': self.roll, 'pitch': self.pitch, 'yaw': self.yaw}
+        return {'x': self.x, 'y': self.y, 'z': self.z, 'roll': self.roll, 'pitch': self.pitch, 'yaw': self.yaw}
 
 
 class advancedMap:
@@ -78,7 +77,8 @@ class advancedMap:
     def createTiles(self, tiles_layer, type='floor'):
         for i in range(0, self.width):
             for j in range(0, self.height):
-                add_new_obj(self.map, tiles_layer, "tiles", f'{self.map_name}/tile_{i}_{j}', {'i': i, 'j': j, 'type': type})
+                add_new_obj(self.map, tiles_layer, "tiles", f'{self.map_name}/tile_{i}_{j}',
+                            {'i': i, 'j': j, 'type': type})
 
     def createTileMaps(self):
         # add_new_obj(M, tile_maps_layer, "tile_maps", f'{self.map_name}', {'tile_size': {'x': 0.585, 'y': 0.585}})
@@ -87,6 +87,7 @@ class advancedMap:
     '''
     Main creation doesnt work
     '''
+
     # def createMain():
     #     dict_file = {'main': {'frames': 'frames.yaml', 'tiles': 'tiles.yaml', 'tile_maps': 'tiles_maps.yaml'}}
     #     return dict_file
@@ -109,11 +110,13 @@ class advancedMap:
         for elem in wt_list:
             x, y = self.__calc_xy_wt(elem)
             yaw = elem[2]
-            pose = Pose(x=(x) * DEFAULT_TILE_SIZE, y=(y+0.5) * DEFAULT_TILE_SIZE, yaw=yaw)
+            pose = Pose(x=(x) * DEFAULT_TILE_SIZE, y=(y + 0.5) * DEFAULT_TILE_SIZE, yaw=yaw)
 
             counter += 1
-            add_new_obj(M, watchtowers_layer, "watchtowers", f"{self.map_name}/watchtower{counter}", {"configuration": "WT18"})
-            add_new_obj(M, frames_layer, "frames", f'{self.map_name}/watchtower{counter}', {'relative_to': None, 'pose': None})
+            add_new_obj(M, watchtowers_layer, "watchtowers", f"{self.map_name}/watchtower{counter}",
+                        {"configuration": "WT18"})
+            add_new_obj(M, frames_layer, "frames", f'{self.map_name}/watchtower{counter}',
+                        {'relative_to': None, 'pose': None})
             frames_layer[f'{self.map_name}/watchtower{counter}']['pose'] = pose.get_pose()
 
     def generateRandomPose(self):
@@ -127,12 +130,15 @@ class advancedMap:
 
         pose = Pose(generated_x, generated_y)
         return pose
+
     def createTrafficSigns(self, M, frames_layer, traffic_signs_layer, n):
-        types = ["stop", "pedestrian"] #TODO
-        for counter in range(0,n):
+        types = ["stop", "pedestrian"]
+        for counter in range(0, n):
             pose = self.generateRandomPose()
-            add_new_obj(M, traffic_signs_layer, "traffic_signs", f"{self.map_name}/traffic_signs{counter}", {"family": "36h11", "id": 1, "type": "stop"})
-            add_new_obj(M, frames_layer, "frames", f'{self.map_name}/traffic_signs{counter}', {'relative_to': None, 'pose': None})
+            add_new_obj(M, traffic_signs_layer, "traffic_signs", f"{self.map_name}/traffic_signs{counter}",
+                        {"family": "36h11", "id": 1, "type": "stop"})
+            add_new_obj(M, frames_layer, "frames", f'{self.map_name}/traffic_signs{counter}',
+                        {'relative_to': None, 'pose': None})
             frames_layer[f'{self.map_name}/traffic_signs{counter}']['pose'] = pose.get_pose()
 
     def createGroundTags(self, M, frames_layer, ground_tags_layer, n):
@@ -156,11 +162,11 @@ class advancedMap:
     def createVehicles(self, M, frames_layer, vehicles_layer, n):
         for counter in range(0, n):
             pose = self.generateRandomPose()
-            add_new_obj(M, vehicles_layer, "vehicles", f"{self.map_name}/vehicle{counter}", {"configuration": "DB19", "color": "blue", "id": 1})
-            add_new_obj(M, frames_layer, "frames", f'{self.map_name}/vehicle{counter}', {'relative_to': None, 'pose': None})
+            add_new_obj(M, vehicles_layer, "vehicles", f"{self.map_name}/vehicle{counter}",
+                        {"configuration": "DB19", "color": "blue", "id": 1})
+            add_new_obj(M, frames_layer, "frames", f'{self.map_name}/vehicle{counter}',
+                        {'relative_to': None, 'pose': None})
             frames_layer[f'{self.map_name}/vehicle{counter}']['pose'] = pose.get_pose()
-
-
 
     def createEmptyMap(self):
         frames_layer = MapLayer(self.map, "frames")
@@ -176,57 +182,6 @@ class advancedMap:
         self.map.layers.__dict__["tiles"] = tiles_layer
         self.map.layers.__dict__["tile_maps"] = tile_maps_layer
         self.map.to_disk()
-
-    # def generateNewMap(self, info):
-    #     d_map = DuckietownMap(Generator(info)).new().save()
-    #     state = d_map._generator.get_state()
-    #     save_path = d_map._generator.get_save_path()
-    #     old_map = state.map
-    #     a_map = advancedMap(width=state.width, height=state.height, storage_location=save_path)
-    #
-    #     frames_layer = MapLayer(a_map.map, "frames")
-    #     tiles_layer = MapLayer(a_map.map, "tiles")
-    #     tile_maps_layer = MapLayer(a_map.map, "tile_maps", a_map.createTileMaps())
-    #     traffic_signs_layer = MapLayer(a_map.map, "traffic_signs")
-    #     ground_tags_layer = MapLayer(a_map, "ground_tags")
-    #     citizens_layer = MapLayer(a_map, "citizens")
-    #     vehicles_layer = MapLayer(a_map, "vehicles")
-    #
-    #     add_new_obj(a_map.map, frames_layer, "frames", f'{a_map.map_name}', {'relative_to': None, 'pose': None})
-    #     frames_layer[f'{a_map.map_name}']['pose'] = Pose(1.0, 2.0).get_pose()
-    #
-    #     for height in range(0, state.width):
-    #         for width in range(0, state.height):
-    #             old_cell = old_map[width][height]
-    #             new_cell = d_map.NEW_CELLS[old_cell]
-    #             pose = Pose(x=width * d_map.DEFAULT_TILE_SIZE, y=height * d_map.DEFAULT_TILE_SIZE, yaw=new_cell[1])
-    #             a_map.createMapTileBlock(a_map.map, frames_layer, width, height, None, pose)
-    #             add_new_obj(a_map.map, tiles_layer, "tiles", f'{a_map.map_name}/tile_{width}_{height}',
-    #                         {'i': width, 'j': height, 'type': new_cell[0]})
-    #
-    #     watchtower_layer = MapLayer(a_map.map, "watchtowers")
-    #     watchtowers_list = d_map.get_watchtowers_place(state)
-    #     a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list)
-    #     a_map.createTrafficSigns(a_map.map, frames_layer, traffic_signs_layer, info['traffic_signs'])
-    #     a_map.createGroundTags(a_map.map, frames_layer, ground_tags_layer, info['ground_tags'])
-    #     a_map.createCitizens(a_map.map, frames_layer, citizens_layer, info['citizens'])
-    #     a_map.createVehicles(a_map.map, frames_layer, vehicles_layer, ['vehicles'])
-    #
-    #     layers = {
-    #         "watchtowers": watchtower_layer,
-    #         "frames": frames_layer,
-    #         "tiles": tiles_layer,
-    #         "tile_maps": tile_maps_layer,
-    #         "traffic_signs": traffic_signs_layer,
-    #         "ground_tags": ground_tags_layer,
-    #         "citizens": citizens_layer,
-    #         "vehicles": vehicles_layer,
-    #     }
-    #
-    #     for layer in layers:
-    #         d_map.connect_layers(a_map, layer, layers)
-    #
-    #     a_map.map.to_disk()
 
 
 def add_new_obj(dm: Map,
@@ -262,4 +217,4 @@ if __name__ == '__main__':
         'watchtowers': True,
     }
     eMap = advancedMap(width=info['width'], height=info['height'], storage_location=info['path'])
-    eMap.generateNewMap(info)
+    eMap.createEmptyMap()
