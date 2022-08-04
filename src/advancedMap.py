@@ -8,6 +8,8 @@ from dt_maps.types.traffic_signs import TrafficSign
 from dt_maps.types.ground_tags import GroundTag
 from dt_maps.types.citizens import Citizen
 from dt_maps.types.vehicles import Vehicle
+# from duckietown_map import DuckietownMap
+# from generator import Generator
 
 DEFAULT_TILE_SIZE = 0.585
 
@@ -19,6 +21,21 @@ REGISTER = {
     "ground_tags": GroundTag,
     "citizens": Citizen,
     "vehicles": Vehicle,
+}
+
+NEW_CELLS = {  # type, yaw
+    0: ['floor', 0],
+    5: ['straight', 0],
+    10: ['straight', 90],
+    3: ['curve', 0],
+    6: ['curve', 90],
+    12: ['curve', 180],
+    9: ['curve', 270],
+    7: ['3way', 0],
+    11: ['3way', 270],
+    14: ['3way', 90],
+    13: ['3way', 180],
+    15: ['4way', 0]
 }
 
 class Pose():
@@ -160,6 +177,57 @@ class advancedMap:
         self.map.layers.__dict__["tile_maps"] = tile_maps_layer
         self.map.to_disk()
 
+    # def generateNewMap(self, info):
+    #     d_map = DuckietownMap(Generator(info)).new().save()
+    #     state = d_map._generator.get_state()
+    #     save_path = d_map._generator.get_save_path()
+    #     old_map = state.map
+    #     a_map = advancedMap(width=state.width, height=state.height, storage_location=save_path)
+    #
+    #     frames_layer = MapLayer(a_map.map, "frames")
+    #     tiles_layer = MapLayer(a_map.map, "tiles")
+    #     tile_maps_layer = MapLayer(a_map.map, "tile_maps", a_map.createTileMaps())
+    #     traffic_signs_layer = MapLayer(a_map.map, "traffic_signs")
+    #     ground_tags_layer = MapLayer(a_map, "ground_tags")
+    #     citizens_layer = MapLayer(a_map, "citizens")
+    #     vehicles_layer = MapLayer(a_map, "vehicles")
+    #
+    #     add_new_obj(a_map.map, frames_layer, "frames", f'{a_map.map_name}', {'relative_to': None, 'pose': None})
+    #     frames_layer[f'{a_map.map_name}']['pose'] = Pose(1.0, 2.0).get_pose()
+    #
+    #     for height in range(0, state.width):
+    #         for width in range(0, state.height):
+    #             old_cell = old_map[width][height]
+    #             new_cell = d_map.NEW_CELLS[old_cell]
+    #             pose = Pose(x=width * d_map.DEFAULT_TILE_SIZE, y=height * d_map.DEFAULT_TILE_SIZE, yaw=new_cell[1])
+    #             a_map.createMapTileBlock(a_map.map, frames_layer, width, height, None, pose)
+    #             add_new_obj(a_map.map, tiles_layer, "tiles", f'{a_map.map_name}/tile_{width}_{height}',
+    #                         {'i': width, 'j': height, 'type': new_cell[0]})
+    #
+    #     watchtower_layer = MapLayer(a_map.map, "watchtowers")
+    #     watchtowers_list = d_map.get_watchtowers_place(state)
+    #     a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list)
+    #     a_map.createTrafficSigns(a_map.map, frames_layer, traffic_signs_layer, info['traffic_signs'])
+    #     a_map.createGroundTags(a_map.map, frames_layer, ground_tags_layer, info['ground_tags'])
+    #     a_map.createCitizens(a_map.map, frames_layer, citizens_layer, info['citizens'])
+    #     a_map.createVehicles(a_map.map, frames_layer, vehicles_layer, ['vehicles'])
+    #
+    #     layers = {
+    #         "watchtowers": watchtower_layer,
+    #         "frames": frames_layer,
+    #         "tiles": tiles_layer,
+    #         "tile_maps": tile_maps_layer,
+    #         "traffic_signs": traffic_signs_layer,
+    #         "ground_tags": ground_tags_layer,
+    #         "citizens": citizens_layer,
+    #         "vehicles": vehicles_layer,
+    #     }
+    #
+    #     for layer in layers:
+    #         d_map.connect_layers(a_map, layer, layers)
+    #
+    #     a_map.map.to_disk()
+
 
 def add_new_obj(dm: Map,
                 layer: MapLayer,
@@ -173,5 +241,25 @@ def add_new_obj(dm: Map,
 
 
 if __name__ == '__main__':
-    eMap = advancedMap(width=9, height=8, storage_location="./maps")
-    eMap.createEmptyMap()
+    info = {
+        'x': 6,
+        'y': 5,
+        'width': 6,
+        'height': 5,
+        'length': 10,
+        'path': './maps',
+        'crossroads_data': {
+            'triple': 2,
+            'quad': 0
+        },
+        'tile_width': 0.585,
+        'tile_height': 0.585,
+        'dir_name': './maps',
+        'traffic_signs': 1,
+        'ground_tags': 1,
+        'citizens': 1,
+        'vehicles': 1,
+        'watchtowers': True,
+    }
+    eMap = advancedMap(width=info['width'], height=info['height'], storage_location=info['path'])
+    eMap.generateNewMap(info)

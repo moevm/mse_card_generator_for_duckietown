@@ -1,7 +1,7 @@
 from src.advancedMap import advancedMap, Pose, add_new_obj
 
 from dt_maps import MapLayer
-
+from generator import Generator
 
 class DuckietownMap(object):
     DEFAULT_TILE_SIZE = 0.585
@@ -111,12 +111,12 @@ class DuckietownMap(object):
     def connect_layers(self, a_map:advancedMap, layer_name:str, layers: dict):
         a_map.map.layers.__dict__[layer_name] = layers[layer_name]
 
-    def save_new_architecture(self):
+    def save_new_architecture(self, ):
 
         state = self._generator.get_state()
         save_path = self._generator.get_save_path()
         old_map = state.map
-        a_map = advancedMap(state.width, state.height, storage_location=save_path)
+        a_map = advancedMap(width=state.width, height=state.height, storage_location=save_path)
 
         frames_layer = MapLayer(a_map.map, "frames")
         tiles_layer = MapLayer(a_map.map, "tiles")
@@ -162,5 +162,131 @@ class DuckietownMap(object):
 
         a_map.map.to_disk()
 
+    def generateMap(self, ):
+
+        state = self._generator.get_state()
+        save_path = self._generator.get_save_path()
+        old_map = state.map
+        a_map = advancedMap(width=state.width, height=state.height, storage_location=save_path)
+
+        frames_layer = MapLayer(a_map.map, "frames")
+        tiles_layer = MapLayer(a_map.map, "tiles")
+        tile_maps_layer = MapLayer(a_map.map, "tile_maps", a_map.createTileMaps())
+        traffic_signs_layer = MapLayer(a_map.map, "traffic_signs")
+        ground_tags_layer = MapLayer(a_map, "ground_tags")
+        citizens_layer = MapLayer(a_map, "citizens")
+        vehicles_layer = MapLayer(a_map, "vehicles")
+
+        add_new_obj(a_map.map, frames_layer, "frames", f'{a_map.map_name}', {'relative_to': None, 'pose': None})
+        frames_layer[f'{a_map.map_name}']['pose'] = Pose(1.0, 2.0).get_pose()
+
+        for height in range(0, state.width):
+            for width in range(0, state.height):
+                old_cell = old_map[width][height]
+                new_cell = self.NEW_CELLS[old_cell]
+                pose = Pose(x=width * self.DEFAULT_TILE_SIZE, y=height * self.DEFAULT_TILE_SIZE, yaw=new_cell[1])
+                a_map.createMapTileBlock(a_map.map, frames_layer, width, height, None, pose)
+                add_new_obj(a_map.map, tiles_layer, "tiles", f'{a_map.map_name}/tile_{width}_{height}',
+                            {'i': width, 'j': height, 'type': new_cell[0]})
+
+        watchtower_layer = MapLayer(a_map.map, "watchtowers")
+        watchtowers_list = self.get_watchtowers_place(state)
+        a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list)
+        a_map.createTrafficSigns(a_map.map, frames_layer, traffic_signs_layer, 1)
+        a_map.createGroundTags(a_map.map, frames_layer, ground_tags_layer, 1)
+        a_map.createCitizens(a_map.map, frames_layer, citizens_layer, 1)
+        a_map.createVehicles(a_map.map, frames_layer, vehicles_layer, 1)
+
+        layers ={
+            "watchtowers": watchtower_layer,
+            "frames": frames_layer,
+            "tiles": tiles_layer,
+            "tile_maps": tile_maps_layer,
+            "traffic_signs": traffic_signs_layer,
+            "ground_tags": ground_tags_layer,
+            "citizens": citizens_layer,
+            "vehicles": vehicles_layer,
+        }
+
+        for layer in layers:
+            self.connect_layers(a_map, layer, layers)
+
+        a_map.map.to_disk()
+
+
     def save(self):
         self.save_new_architecture()  # reload to new arch map
+
+    def generateNewMap(self, info):
+        # d_map = DuckietownMap(Generator(info)).new().save()
+        state = self._generator.get_state()
+        save_path = self._generator.get_save_path()
+        old_map = state.map
+        a_map = advancedMap(width=state.width, height=state.height, storage_location=save_path)
+
+        frames_layer = MapLayer(a_map.map, "frames")
+        tiles_layer = MapLayer(a_map.map, "tiles")
+        tile_maps_layer = MapLayer(a_map.map, "tile_maps", a_map.createTileMaps())
+        traffic_signs_layer = MapLayer(a_map.map, "traffic_signs")
+        ground_tags_layer = MapLayer(a_map, "ground_tags")
+        citizens_layer = MapLayer(a_map, "citizens")
+        vehicles_layer = MapLayer(a_map, "vehicles")
+
+        add_new_obj(a_map.map, frames_layer, "frames", f'{a_map.map_name}', {'relative_to': None, 'pose': None})
+        frames_layer[f'{a_map.map_name}']['pose'] = Pose(1.0, 2.0).get_pose()
+
+        for height in range(0, state.width):
+            for width in range(0, state.height):
+                old_cell = old_map[width][height]
+                new_cell = self.NEW_CELLS[old_cell]
+                pose = Pose(x=width * self.DEFAULT_TILE_SIZE, y=height * self.DEFAULT_TILE_SIZE, yaw=new_cell[1])
+                a_map.createMapTileBlock(a_map.map, frames_layer, width, height, None, pose)
+                add_new_obj(a_map.map, tiles_layer, "tiles", f'{a_map.map_name}/tile_{width}_{height}',
+                            {'i': width, 'j': height, 'type': new_cell[0]})
+
+        watchtower_layer = MapLayer(a_map.map, "watchtowers")
+        watchtowers_list = self.get_watchtowers_place(state)
+        a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list)
+        a_map.createTrafficSigns(a_map.map, frames_layer, traffic_signs_layer, info['traffic_signs'])
+        a_map.createGroundTags(a_map.map, frames_layer, ground_tags_layer, info['ground_tags'])
+        a_map.createCitizens(a_map.map, frames_layer, citizens_layer, info['citizens'])
+        a_map.createVehicles(a_map.map, frames_layer, vehicles_layer, info['vehicles'])
+
+        layers = {
+            "watchtowers": watchtower_layer,
+            "frames": frames_layer,
+            "tiles": tiles_layer,
+            "tile_maps": tile_maps_layer,
+            "traffic_signs": traffic_signs_layer,
+            "ground_tags": ground_tags_layer,
+            "citizens": citizens_layer,
+            "vehicles": vehicles_layer,
+        }
+
+        for layer in layers:
+            self.connect_layers(a_map, layer, layers)
+
+        a_map.map.to_disk()
+
+if __name__ == '__main__':
+    info = {
+        'x': 6,
+        'y': 5,
+        'width': 6,
+        'height': 5,
+        'length': 10,
+        'path': '../maps',
+        'crossroads_data': {
+            'triple': 2,
+            'quad': 0
+        },
+        'tile_width': 0.585,
+        'tile_height': 0.585,
+        'dir_name': '../maps',
+        'traffic_signs': 1,
+        'ground_tags': 1,
+        'citizens': 1,
+        'vehicles': 1,
+        'watchtowers': True,
+    }
+    DuckietownMap(Generator(info)).new().generateNewMap(info)
