@@ -1,4 +1,4 @@
 pytest
 setuptools
 
-git+https://github.com/duckietown/lib-dt-maps
+git+https://github.com/OSLL/lib-dt-maps.git@new_layer
