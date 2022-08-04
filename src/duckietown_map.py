@@ -144,7 +144,7 @@ class DuckietownMap(object):
         a_map.createTrafficSigns(a_map.map, frames_layer, traffic_signs_layer, 1)
         a_map.createGroundTags(a_map.map, frames_layer, ground_tags_layer, 1)
         a_map.createCitizens(a_map.map, frames_layer, citizens_layer, 1)
-        # a_map.createVehicles(a_map, frames_layer, vehicles_layer, 1)
+        a_map.createVehicles(a_map.map, frames_layer, vehicles_layer, 1)
 
         layers ={
             "watchtowers": watchtower_layer,

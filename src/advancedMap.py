@@ -136,16 +136,12 @@ class advancedMap:
                         {'relative_to': None, 'pose': None})
             frames_layer[f'duckie{counter}']['pose'] = pose.get_pose()
 
-
-    """Не работает"""
-    # def createVehicles(self, M, frames_layer, vehicles_layer, n):
-    #     for counter in range(0, n):
-    #         pose = self.generateRandomPose()
-    #         add_new_obj(M, vehicles_layer, "vehicles", f"{self.map_name}/vehicle{counter}",
-    #                     {"configuration": "DB19", "color": "blue", "id": 1})
-    #         add_new_obj(M, frames_layer, "frames", f'{self.map_name}/vehicle{counter}',
-    #                     {'relative_to': None, 'pose': None})
-    #         frames_layer[f'{self.map_name}/vehicle"{counter}']['pose'] = pose.get_pose()
+    def createVehicles(self, M, frames_layer, vehicles_layer, n):
+        for counter in range(0, n):
+            pose = self.generateRandomPose()
+            add_new_obj(M, vehicles_layer, "vehicles", f"{self.map_name}/vehicle{counter}", {"configuration": "DB19", "color": "blue", "id": 1})
+            add_new_obj(M, frames_layer, "frames", f'{self.map_name}/vehicle{counter}', {'relative_to': None, 'pose': None})
+            frames_layer[f'{self.map_name}/vehicle{counter}']['pose'] = pose.get_pose()
 
 
 
