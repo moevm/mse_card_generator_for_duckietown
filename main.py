@@ -1,6 +1,6 @@
-from src.parser import Parser
-from src.generator import Generator
-from src.duckietown_map import DuckietownMap
+from dt_map_generator.parser import Parser
+from dt_map_generator.generator import Generator
+from dt_map_generator.duckietown_map import DuckietownMap
 
 
 if __name__ == '__main__':
