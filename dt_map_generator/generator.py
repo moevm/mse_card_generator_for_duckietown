@@ -31,13 +31,13 @@ class Generator(object):
             self.can_be_used_as_node = False
             self.checked = False
 
-    def __init__(self, settings=None):
-        self._width = settings['width']
-        self._height = settings['height']
-        self._crossroads_data = settings['crossroads_data']
+    def __init__(self, info=None):
+        self._width = info['width']
+        self._height = info['height']
+        self._crossroads_data = info['crossroads_data']
         self._current_road_length = 0
-        self._max_length = settings['length']
-        self._path = settings['path']
+        self._max_length = info['length']
+        self._path = info['path']
 
         self._cells = [[self.Cell(Position(x, y)) for x in range(self._width)] for y in range(self._height)]
         self.__cannot_be_used_as_node = []
