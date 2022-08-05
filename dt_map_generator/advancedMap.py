@@ -128,7 +128,7 @@ class advancedMap:
         generated_x = random.uniform(min_width, max_width) * DEFAULT_TILE_SIZE
         generated_y = random.uniform(min_height, max_height) * DEFAULT_TILE_SIZE
 
-        pose = Pose(generated_x, generated_y)
+        pose = Pose(generated_y, generated_x)
         return pose
 
     def createTrafficSigns(self, M, frames_layer, traffic_signs_layer, n):
