@@ -97,13 +97,13 @@ class advancedMap:
         y = elem[1]
         direction = elem[2]
         if direction == 0:
-            return x + 0.4, y + 0.6
+            return x + 0.5, y + 0.6
         if direction == 90:
-            return x + 0.6, y - (1 - 0.585)
+            return x + 1, y
         if direction == 180:
-            return x + 0.4, y - 0.6
+            return x + 0.5, y - 0.6
         if direction == 270:
-            return x - 0.6, y - (1 - 0.585)
+            return x, y
 
     def createWatchtowers(self, M, frames_layer, watchtowers_layer, wt_list: list):
         counter = 0
