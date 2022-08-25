@@ -1,3 +1,5 @@
+import os
+
 from dt_map_generator.advancedMap import advancedMap, Pose, add_new_obj
 
 from dt_maps import MapLayer
@@ -50,7 +52,7 @@ class DuckietownMap(object):
     def print_map(self, state):
         old_map = state.map
         # old_map =tuple(zip(*old_map[::-1])) #rotate to 90 degree
-        print("map=", old_map)
+        # print("map=", old_map)
         for i in range(state.height):
             for j in range(state.width):
                 if old_map[i][j] != 0:
@@ -160,6 +162,9 @@ class DuckietownMap(object):
         for layer in layers:
             self.connect_layers(a_map, layer, layers)
 
+        if not os.path.exists(a_map.getStoragePath()):
+            os.makedirs(a_map.getStoragePath())
+
         a_map.map.to_disk()
 
     def save(self):
@@ -214,6 +219,9 @@ class DuckietownMap(object):
 
         for layer in layers:
             self.connect_layers(a_map, layer, layers)
+
+        if not os.path.exists(a_map.getStoragePath()):
+            os.makedirs(a_map.getStoragePath())
 
         a_map.map.to_disk()
 

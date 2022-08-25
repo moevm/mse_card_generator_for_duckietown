@@ -58,6 +58,8 @@ class advancedMap:
         self.storage_location = storage_location
         self.map = Map(name=map_name, path=storage_location)
 
+    def getStoragePath(self):
+        return self.storage_location
     def createMapTileBlock(self, M, frames_layer, tile_x, tile_y, relative_to, pose: Pose):
         add_new_obj(M, frames_layer, "frames", f'{self.map_name}/tile_{tile_x}_{tile_y}',
                     {'relative_to': relative_to, 'pose': None})

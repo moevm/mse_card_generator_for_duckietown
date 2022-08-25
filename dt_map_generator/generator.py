@@ -93,7 +93,7 @@ class Generator(object):
                 break
 
             self.debug()
-            print(self._crossroads_data['triple'])
+            # print(self._crossroads_data['triple'])
 
     def _crossroads_block(self, *_cells):
         for _cell in _cells:
@@ -196,7 +196,7 @@ class Generator(object):
                 node, ways = self._get_correct_cycle_ways(accepted_cells, self.correct_cycle_node_condition,
                                                           cannot_be_used_as_node, ways_count=1)
 
-                print('node = {}'.format(node))
+                # print('node = {}'.format(node))
 
                 if not node:
                     return False
@@ -229,7 +229,7 @@ class Generator(object):
         if end:
             algorithm_end_condition = lambda c: c == end
 
-        print(begin)
+        # print(begin)
 
         queue = deque()
         queue.append(begin)
