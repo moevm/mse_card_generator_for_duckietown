@@ -5,6 +5,7 @@ from dt_map_generator.advancedMap import advancedMap, Pose, add_new_obj
 from dt_maps import MapLayer
 from dt_map_generator.generator import Generator
 
+
 class DuckietownMap(object):
     DEFAULT_TILE_SIZE = 0.585
 
@@ -110,7 +111,7 @@ class DuckietownMap(object):
         flor_near_road, watchtowers_list = self.is_near_road(state, floor_list)
         return watchtowers_list
 
-    def connect_layers(self, a_map:advancedMap, layer_name:str, layers: dict):
+    def connect_layers(self, a_map: advancedMap, layer_name: str, layers: dict):
         a_map.map.layers.__dict__[layer_name] = layers[layer_name]
 
     def save_new_architecture(self):
@@ -136,19 +137,19 @@ class DuckietownMap(object):
                 old_cell = old_map[width][height]
                 new_cell = self.NEW_CELLS[old_cell]
                 pose = Pose(x=width * self.DEFAULT_TILE_SIZE, y=height * self.DEFAULT_TILE_SIZE, yaw=new_cell[1])
-                a_map.createMapTileBlock(a_map.map, frames_layer, width, height, None, pose)
+                a_map.createMapTileBlock(a_map.map, frames_layer, width, height, a_map.map_name, pose)
                 add_new_obj(a_map.map, tiles_layer, "tiles", f'{a_map.map_name}/tile_{width}_{height}',
                             {'i': width, 'j': height, 'type': new_cell[0]})
 
         watchtower_layer = MapLayer(a_map.map, "watchtowers")
         watchtowers_list = self.get_watchtowers_place(state)
-        a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list)
-        a_map.createTrafficSigns(a_map.map, frames_layer, traffic_signs_layer, 1)
-        a_map.createGroundTags(a_map.map, frames_layer, ground_tags_layer, 1)
-        a_map.createCitizens(a_map.map, frames_layer, citizens_layer, 1)
-        a_map.createVehicles(a_map.map, frames_layer, vehicles_layer, 1)
+        a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list, a_map.map_name)
+        a_map.createTrafficSigns(a_map.map, frames_layer, traffic_signs_layer, a_map.map_name, 1)
+        a_map.createGroundTags(a_map.map, frames_layer, ground_tags_layer, a_map.map_name, 1)
+        a_map.createCitizens(a_map.map, frames_layer, citizens_layer, a_map.map_name, 1)
+        a_map.createVehicles(a_map.map, frames_layer, vehicles_layer, a_map.map_name, 1)
 
-        layers ={
+        layers = {
             "watchtowers": watchtower_layer,
             "frames": frames_layer,
             "tiles": tiles_layer,
@@ -192,7 +193,7 @@ class DuckietownMap(object):
                 old_cell = old_map[width][height]
                 new_cell = self.NEW_CELLS[old_cell]
                 pose = Pose(x=width * self.DEFAULT_TILE_SIZE, y=height * self.DEFAULT_TILE_SIZE, yaw=new_cell[1])
-                a_map.createMapTileBlock(a_map.map, frames_layer, width, height, None, pose)
+                a_map.createMapTileBlock(a_map.map, frames_layer, width, height, a_map.map_name, pose)
                 add_new_obj(a_map.map, tiles_layer, "tiles", f'{a_map.map_name}/tile_{width}_{height}',
                             {'i': width, 'j': height, 'type': new_cell[0]})
 
@@ -200,11 +201,11 @@ class DuckietownMap(object):
         watchtowers_list = list()
         if (info['watchtowers'] == True):
             watchtowers_list = self.get_watchtowers_place(state)
-        a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list)
-        a_map.createTrafficSigns(a_map.map, frames_layer, traffic_signs_layer, info['traffic_signs'])
-        a_map.createGroundTags(a_map.map, frames_layer, ground_tags_layer, info['ground_tags'])
-        a_map.createCitizens(a_map.map, frames_layer, citizens_layer, info['citizens'])
-        a_map.createVehicles(a_map.map, frames_layer, vehicles_layer, info['vehicles'])
+        a_map.createWatchtowers(a_map.map, frames_layer, watchtower_layer, watchtowers_list, a_map.map_name)
+        a_map.createTrafficSigns(a_map.map, frames_layer, traffic_signs_layer, a_map.map_name, info['traffic_signs'])
+        a_map.createGroundTags(a_map.map, frames_layer, ground_tags_layer, a_map.map_name, info['ground_tags'])
+        a_map.createCitizens(a_map.map, frames_layer, citizens_layer, a_map.map_name, info['citizens'])
+        a_map.createVehicles(a_map.map, frames_layer, vehicles_layer, a_map.map_name, info['vehicles'])
 
         layers = {
             "watchtowers": watchtower_layer,
@@ -224,6 +225,7 @@ class DuckietownMap(object):
             os.makedirs(a_map.getStoragePath())
 
         a_map.map.to_disk()
+
 
 if __name__ == '__main__':
     info = {
