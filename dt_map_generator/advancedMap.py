@@ -107,7 +107,7 @@ class advancedMap:
         if direction == 270:
             return x, y
 
-    def createWatchtowers(self, M, frames_layer, watchtowers_layer, wt_list: list):
+    def createWatchtowers(self, M, frames_layer, watchtowers_layer, wt_list: list, relative_to):
         counter = 0
         for elem in wt_list:
             x, y = self.__calc_xy_wt(elem)
@@ -118,7 +118,7 @@ class advancedMap:
             add_new_obj(M, watchtowers_layer, "watchtowers", f"{self.map_name}/watchtower{counter}",
                         {"configuration": "WT18"})
             add_new_obj(M, frames_layer, "frames", f'{self.map_name}/watchtower{counter}',
-                        {'relative_to': None, 'pose': None})
+                        {'relative_to': relative_to, 'pose': None})
             frames_layer[f'{self.map_name}/watchtower{counter}']['pose'] = pose.get_pose()
 
     def generateRandomPose(self):
@@ -133,41 +133,41 @@ class advancedMap:
         pose = Pose(generated_y, generated_x)
         return pose
 
-    def createTrafficSigns(self, M, frames_layer, traffic_signs_layer, n):
+    def createTrafficSigns(self, M, frames_layer, traffic_signs_layer, relative_to,n):
         types = ["stop", "pedestrian"]
         for counter in range(0, n):
             pose = self.generateRandomPose()
             add_new_obj(M, traffic_signs_layer, "traffic_signs", f"{self.map_name}/traffic_signs{counter}",
                         {"family": "36h11", "id": 1, "type": "stop"})
             add_new_obj(M, frames_layer, "frames", f'{self.map_name}/traffic_signs{counter}',
-                        {'relative_to': None, 'pose': None})
+                        {'relative_to': relative_to, 'pose': None})
             frames_layer[f'{self.map_name}/traffic_signs{counter}']['pose'] = pose.get_pose()
 
-    def createGroundTags(self, M, frames_layer, ground_tags_layer, n):
+    def createGroundTags(self, M, frames_layer, ground_tags_layer, relative_to,n):
         for counter in range(0, n):
             pose = self.generateRandomPose()
             add_new_obj(M, ground_tags_layer, "ground_tags", f"{self.map_name}/ground_tags{counter}",
                         {"family": "36h11", "id": 1, "size": 0.15})
             add_new_obj(M, frames_layer, "frames", f'{self.map_name}/ground_tags{counter}',
-                        {'relative_to': None, 'pose': None})
+                        {'relative_to': relative_to, 'pose': None})
             frames_layer[f'{self.map_name}/ground_tags{counter}']['pose'] = pose.get_pose()
 
-    def createCitizens(self, M, frames_layer, citizens_layer, n):
+    def createCitizens(self, M, frames_layer, citizens_layer, relative_to, n):
         for counter in range(0, n):
             pose = self.generateRandomPose()
             add_new_obj(M, citizens_layer, "citizens", f"duckie{counter}",
                         {"color": "yellow"})
             add_new_obj(M, frames_layer, "frames", f'duckie{counter}',
-                        {'relative_to': None, 'pose': None})
+                        {'relative_to': relative_to, 'pose': None})
             frames_layer[f'duckie{counter}']['pose'] = pose.get_pose()
 
-    def createVehicles(self, M, frames_layer, vehicles_layer, n):
+    def createVehicles(self, M, frames_layer, vehicles_layer, relative_to,n):
         for counter in range(0, n):
             pose = self.generateRandomPose()
             add_new_obj(M, vehicles_layer, "vehicles", f"{self.map_name}/vehicle{counter}",
                         {"configuration": "DB19", "color": "blue", "id": 1})
             add_new_obj(M, frames_layer, "frames", f'{self.map_name}/vehicle{counter}',
-                        {'relative_to': None, 'pose': None})
+                        {'relative_to': relative_to, 'pose': None})
             frames_layer[f'{self.map_name}/vehicle{counter}']['pose'] = pose.get_pose()
 
     def createEmptyMap(self):
